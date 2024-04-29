@@ -18,10 +18,19 @@ namespace B02_TextRPG
         static int attack = 10;
         static int defense = 5;
         static int health = 100;
-        static int gold = 1500;
+
+        public int Gold { get; set; }
+
+        public Character()
+        {
+            Gold = 1500;   
+
+        }
+
         public static void ShowInfo() //1(1) 상태보기
         {
             bool exit = false;
+            Character character = new Character();
 
             while (!exit)
             {
@@ -37,7 +46,7 @@ namespace B02_TextRPG
                 Console.WriteLine($"공격력 : {attack}");
                 Console.WriteLine($"방어력 : {defense}");
                 Console.WriteLine($"체 력 : {health}");
-                Console.WriteLine($"Gold : {gold} G");
+                Console.WriteLine($"Gold : {character.Gold} G");
 
                 //나가기 멘트
                 Console.WriteLine();
