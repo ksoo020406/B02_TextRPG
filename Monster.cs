@@ -21,7 +21,7 @@ namespace B02_TextRPG
             damage = attackDamage;
         }
 
-        public void Attack(Character character)
+        public void Attack(Player player)
         {
             character.TakeDamage(damage);
         } 
