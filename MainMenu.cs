@@ -8,8 +8,12 @@ namespace B02_TextRPG
 {
     internal class MainMenu
     {
+
         public static void mainMenu()
         {
+            //Character character = new Character();
+            
+
             // 구성
             // 0. 화면 정리
             Console.Clear();
@@ -40,10 +44,10 @@ namespace B02_TextRPG
                     //전투하기 메뉴 메소드
                     break;
                 case 3:
-                    //InventoryMenu();
+                    Inventory.ShowInventory();
                     break;
                 case 4:
-                    //StoreMenu();
+                    //Store_B02.Store.ShowStore();
                     break;
             }
             mainMenu();// 문제가 발생할 수 있으니 끝날 때 다시 호출해서 잡아주기.
