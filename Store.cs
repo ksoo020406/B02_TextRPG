@@ -45,14 +45,13 @@ namespace B02_TextRPG
                 Console.WriteLine("[구매한 아이템 목록]");
                 Console.WriteLine();
                 Console.WriteLine();
-                // 보유한 아이템 목록 
-                //for (int i = 0; i < Inventory.items.Count; i++)
-                //{
-                //    string status = Inventory.items[i].Purchase ? "구매완료" : $"{Inventory.items[i].Gold} G";
-                //    string Statistics = Inventory.items[i].AttackPower > 0 ? $"공격력: {Inventory.items[i].AttackPower}" :
-                //          Inventory.items[i].DefensePower > 0 ? $"방어력: {Inventory.items[i].DefensePower}" : "";
-                //    Console.WriteLine($"- {Inventory.items[i].Name} | {Statistics} | {Inventory.items[i].Description} | {status}");
-                //}
+                for (int i = 0; i < Inventory.InventoryItems.Count; i++) // 리스트에는 항상 Count(몇 개?)라는 값이 있다.
+                {
+                    string status = Inventory.InventoryItems[i].Purchase ? "구매완료" : $"{Inventory.InventoryItems[i].Gold} G";
+                    string Statistics = Inventory.InventoryItems[i].AttackPower > 0 ? $"공격력: {Inventory.InventoryItems[i].AttackPower}" :
+                          Inventory.InventoryItems[i].DefensePower > 0 ? $"방어력: {Inventory.InventoryItems[i].DefensePower}" : "";
+                    Console.WriteLine($"- {Inventory.InventoryItems[i].Name} | {Statistics} | {Inventory.InventoryItems[i].Description} | {status}");
+                }
                 Console.WriteLine();
                 Console.WriteLine("1. 아이템 구매");
                 Console.WriteLine("2. 아이템 판매");
@@ -122,7 +121,7 @@ namespace B02_TextRPG
                         character.Gold -= selectedItem.Gold;
                         selectedItem.Purchase = true;
                         // 구매한 아이템 리스트에 추가 
-                        //Inventory.PurchaseItems.Add(selectedItem);  
+                        //Inventory.InventoryItems.AddItem(selectedItem);  
                         Console.WriteLine("구매를 완료했습니다!");
                     }
                     else if (character.Gold < selectedItem.Gold)
