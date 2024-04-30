@@ -7,36 +7,36 @@ namespace B02_TextRPG
 {
     public class Monster
     {
-        public string Name { get; set; }
-        public int Level { get; set; }
-        public int Health { get; set; }
-        public int Damage { get; set; }
+        public string MonsterName { get; set; }
+        public int MonsterLevel { get; set; }
+        public int MonsterHealth { get; set; }
+        public int MonsterDamage { get; set; }
+        
 
-
-        public Monster(int monsterLevel, string monsterName, int monsterHealth, int attackDamage)
+        public Monster(int monsterLevel, string monsterName, int monsterHealth, int monsterDamage)
         {
-            level = monsterLevel;
-            name = monsterName;
-            health = monsterHealth;
-            damage = attackDamage;
+            MonsterLevel = monsterLevel;
+            MonsterName = monsterName;
+            MonsterHealth = monsterHealth;
+            MonsterDamage = monsterDamage;
         }
 
         public void Attack(Player player)
         {
-            character.TakeDamage(damage);
+           player.TakeDamage(MonsterDamage);
         } 
 
         public void TakeDamage(int amount)
         {
-            health -= amount;
-            if (health <= 0)
+            MonsterHealth -= amount;
+            if (MonsterHealth <= 0)
             {
                 Die();
             }
         }
         private void Die()
         {
-            Console.WriteLine($"{name} 은 쓰러졌다!.");
+            Console.WriteLine($"{MonsterName} 은 쓰러졌다!.");
         }
 
 
