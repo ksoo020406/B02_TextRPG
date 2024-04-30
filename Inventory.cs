@@ -34,8 +34,7 @@ namespace B02_TextRPG
             switch (ConsoleUtility.PromptMenuChoice(0, 1))
             {
                 case 0:
-                    MainMenu.mainMenu();
-                    break;
+                    return;
                 case 1:
                     //EquipMenu();
                     break;
