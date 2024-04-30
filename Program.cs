@@ -66,7 +66,7 @@ namespace B02_TextRPG
             Console.WriteLine("");
 
             // 2. 선택한 결과를 검증한다.
-            int choice = int.Parse(Console.ReadLine()); 
+            int choice = Console.Read();
 
             // 3. 선택한 결과에 따라 보내준다.
             switch (choice)
@@ -84,7 +84,7 @@ namespace B02_TextRPG
                     Store_B02.ShowStore(player);
                     break;
             }
-            mainMenu();// 문제가 발생할 수 있으니 끝날 때 다시 호출해서 잡아주기.
+            //mainMenu();// 문제가 발생할 수 있으니 끝날 때 다시 호출해서 잡아주기.
         }
 
 

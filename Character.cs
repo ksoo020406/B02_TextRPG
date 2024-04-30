@@ -10,7 +10,6 @@ using System.Xml.Linq;
 namespace B02_TextRPG
 {
 
-   
        public class Player
         {
             public static int Level { get; set; } //캐릭터 레벨
