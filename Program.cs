@@ -4,7 +4,7 @@ namespace B02_TextRPG
 {
     public class GameManager
     {
-        Character character;
+        private Player player;
         //GameManager.StoreItems();
 
 
@@ -13,9 +13,10 @@ namespace B02_TextRPG
             StoreItems();
         }
 
-        public static void StoreItems()
-        {
 
+        public  void StoreItems()
+        {
+            player = new Player("왈왈", "전사");
 
             //Store_B02.Store Armor1 = new Store_B02.Store("수련자의 갑옷", " 수련에 도움을 주는 갑옷입니다. ", 0, 5, 1000);
             //Store_B02.Store Armor = new Store_B02.Store("무쇠 갑옷", "무쇠로 만들어져 튼튼한 갑옷입니다.", 0, 9, 2000);
@@ -65,13 +66,13 @@ namespace B02_TextRPG
             Console.WriteLine("");
 
             // 2. 선택한 결과를 검증한다.
-            int choice = ConsoleUtility.PromptMenuChoice(1, 4);
+            int choice = int.Parse(Console.ReadLine()); 
 
             // 3. 선택한 결과에 따라 보내준다.
             switch (choice)
             {
                 case 1:
-                    //StatusMenu();
+                    Player.ShowInfo();
                     break;
                 case 2:
                     //전투하기 메뉴 메소드
@@ -80,7 +81,7 @@ namespace B02_TextRPG
                     Inventory.ShowInventory();
                     break;
                 case 4:
-                    Store_B02.ShowStore(character);
+                    Store_B02.ShowStore(player);
                     break;
             }
             mainMenu();// 문제가 발생할 수 있으니 끝날 때 다시 호출해서 잡아주기.

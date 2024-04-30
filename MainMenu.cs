@@ -38,7 +38,7 @@ namespace B02_TextRPG
             switch (choice)
             {
                 case 1:
-                    //StatusMenu();
+                    Player.ShowInfo();
                     break;
                 case 2:
                     //전투하기 메뉴 메소드

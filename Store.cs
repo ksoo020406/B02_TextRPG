@@ -13,7 +13,7 @@ namespace B02_TextRPG
 
         }
 
-            public static void ShowStore(Character.Player player)
+            public static void ShowStore(Player player)
             {
                 Console.Clear();
 
@@ -22,7 +22,7 @@ namespace B02_TextRPG
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("[보유 골드]");
-                Console.WriteLine($"{Character.Player.Gold} G");
+                Console.WriteLine($"{Player.Gold} G");
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("[구매한 아이템 목록]");
@@ -61,7 +61,7 @@ namespace B02_TextRPG
 
             }
 
-            public static void PurchasedMogi(Character.Player player)
+            public static void PurchasedMogi(Player player)
             {
                 Console.Clear();
 
@@ -70,7 +70,7 @@ namespace B02_TextRPG
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("[보유 골드]");
-                Console.WriteLine($"{Character.Player.Gold} G");
+                Console.WriteLine($"{Player.Gold} G");
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("[아이템 목록]");
@@ -99,17 +99,17 @@ namespace B02_TextRPG
                         Console.WriteLine("이미 구매한 아이템 입니다!");
                         ShowStore(player);
                     }
-                    else if (Character.Player.Gold >= selectedItem.Gold)
+                    else if (Player.Gold >= selectedItem.Gold)
                     {
                     // 재화 감소
-                        Character.Player.Gold -= selectedItem.Gold;
+                        Player.Gold -= selectedItem.Gold;
                         selectedItem.Purchase = true;
                         // 구매한 아이템 리스트에 추가 
                         Item.InventoryItems.Add(selectedItem);
                         Console.WriteLine("구매를 완료했습니다!");
                         ShowStore(player);
                     }
-                    else if (Character.Player.Gold < selectedItem.Gold)
+                    else if (Player.Gold < selectedItem.Gold)
                     {
                         Console.WriteLine("골드가 부족합니다..");
                     }
@@ -122,7 +122,7 @@ namespace B02_TextRPG
 
           
 
-            static void Resale(Character.Player player)
+            static void Resale(Player player)
             {
                 Console.Clear();
 
@@ -132,7 +132,7 @@ namespace B02_TextRPG
                 Console.WriteLine("상점 - 아이템 판매");
                 Console.WriteLine("필요한 아이템을 얻을 수 있는 상점입니다.");
                 Console.WriteLine();
-                Console.WriteLine($"보유 골드 {Character.Player.Gold} G");
+                Console.WriteLine($"보유 골드 {Player.Gold} G");
                 Console.WriteLine();
                 Console.WriteLine("[아이템 목록]");
                 Console.WriteLine();

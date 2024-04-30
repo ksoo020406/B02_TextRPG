@@ -10,9 +10,8 @@ using System.Xml.Linq;
 namespace B02_TextRPG
 {
 
-    internal class Character
-    {
-        public class Player
+   
+       public class Player
         {
             public static int Level { get; set; } //캐릭터 레벨
             public static string Name { get; set; } //캐릭터 이름
@@ -83,4 +82,4 @@ namespace B02_TextRPG
     }
 
 
-}
+
