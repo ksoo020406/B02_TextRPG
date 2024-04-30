@@ -22,13 +22,7 @@ namespace B02_TextRPG
             Purchase = false;
         }
 
-        public static List<Inventory> InventoryItems = new List<Inventory>();  // 인벤 아이템
-
-        // 아이템 추가 메소드
-        public static void AddItem(Inventory inventoryItems)
-        {
-            InventoryItems.Add(inventoryItems);
-        }
+       // public static List<Item> InventoryItems = new List<Item>();  // 인벤 아이템
 
         public static void ShowInventory()
         {
@@ -41,12 +35,12 @@ namespace B02_TextRPG
             Console.WriteLine("[아이템 목록]");
             Console.WriteLine("");
 
-            for (int i = 0; i < InventoryItems.Count; i++) // 리스트에는 항상 Count(몇 개?)라는 값이 있다.
+            for (int i = 0; i < Item.InventoryItems.Count; i++) // 리스트에는 항상 Count(몇 개?)라는 값이 있다.
             {
-                string status = InventoryItems[i].Purchase ? "구매완료" : $"{InventoryItems[i].Gold} G";
-                string Statistics = InventoryItems[i].AttackPower > 0 ? $"공격력: {InventoryItems[i].AttackPower}" :
-                      InventoryItems[i].DefensePower > 0 ? $"방어력: {InventoryItems[i].DefensePower}" : "";
-                Console.WriteLine($"- {InventoryItems[i].Name} | {Statistics} | {InventoryItems[i].Description} | {status}");
+                string status = Item.InventoryItems[i].Purchase ? "구매완료" : $"{Item.InventoryItems[i].Gold} G";
+                string Statistics = Item.InventoryItems[i].AttackPower > 0 ? $"공격력: {Item.InventoryItems[i].AttackPower}" :
+                      Item.InventoryItems[i].DefensePower > 0 ? $"방어력: {Item.InventoryItems[i].DefensePower}" : "";
+                Console.WriteLine($"- {Item.InventoryItems[i].Name} | {Statistics} | {Item.InventoryItems[i].Description} | {status}");
             }
 
             Console.WriteLine("");

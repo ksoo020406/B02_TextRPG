@@ -28,7 +28,7 @@ namespace B02_TextRPG
                 Purchase = false;
             }
 
-            public static List<Store> storeItems = new List<Store>();  // 상점 아이템
+            //public static List<Item> storeItems = new List<Item>();  // 상점 아이템
 
             public static void ShowStore(Character character)
             {
@@ -45,12 +45,12 @@ namespace B02_TextRPG
                 Console.WriteLine("[구매한 아이템 목록]");
                 Console.WriteLine();
                 Console.WriteLine();
-                for (int i = 0; i < Inventory.InventoryItems.Count; i++) // 리스트에는 항상 Count(몇 개?)라는 값이 있다.
+                for (int i = 0; i < Item.InventoryItems.Count; i++) // 리스트에는 항상 Count(몇 개?)라는 값이 있다.
                 {
-                    string status = Inventory.InventoryItems[i].Purchase ? "구매완료" : $"{Inventory.InventoryItems[i].Gold} G";
-                    string Statistics = Inventory.InventoryItems[i].AttackPower > 0 ? $"공격력: {Inventory.InventoryItems[i].AttackPower}" :
-                          Inventory.InventoryItems[i].DefensePower > 0 ? $"방어력: {Inventory.InventoryItems[i].DefensePower}" : "";
-                    Console.WriteLine($"- {Inventory.InventoryItems[i].Name} | {Statistics} | {Inventory.InventoryItems[i].Description} | {status}");
+                    string status = Item.InventoryItems[i].Purchase ? "구매완료" : $"{Item.InventoryItems[i].Gold} G";
+                    string Statistics = Item.InventoryItems[i].AttackPower > 0 ? $"공격력: {Item.InventoryItems[i].AttackPower}" :
+                          Item.InventoryItems[i].DefensePower > 0 ? $"방어력: {Item.InventoryItems[i].DefensePower}" : "";
+                    Console.WriteLine($"- {Item.InventoryItems[i].Name} | {Statistics} | {Item.InventoryItems[i].Description} | {status}");
                 }
                 Console.WriteLine();
                 Console.WriteLine("1. 아이템 구매");
@@ -72,7 +72,7 @@ namespace B02_TextRPG
                 }
                 else
                 {
-                    return;
+                    // 다시 메인 화면으로 
                 }
 
 
@@ -91,12 +91,12 @@ namespace B02_TextRPG
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("[아이템 목록]");
-                for (int i = 0; i < storeItems.Count; i++)
+                for (int i = 0; i < Item.storeItems.Count; i++)
                 {
-                    string status = storeItems[i].Purchase ? "구매완료" : $"{storeItems[i].Gold} G";
-                    string Statistics = storeItems[i].AttackPower > 0 ? $"공격력: {storeItems[i].AttackPower}" :
-                          storeItems[i].DefensePower > 0 ? $"방어력: {storeItems[i].DefensePower}" : "";
-                    Console.WriteLine($"- {i + 1}. {storeItems[i].Name} | {Statistics} | {storeItems[i].Description} | {status}");
+                    string status = Item.storeItems[i].Purchase ? "구매완료" : $"{Item.storeItems[i].Gold} G";
+                    string Statistics = Item.storeItems[i].AttackPower > 0 ? $"공격력: {Item.storeItems[i].AttackPower}" :
+                          Item.storeItems[i].DefensePower > 0 ? $"방어력: {Item.storeItems[i].DefensePower}" : "";
+                    Console.WriteLine($"- {i + 1}. {Item.storeItems[i].Name} | {Statistics} | {Item.storeItems[i].Description} | {status}");
                 }
                 Console.WriteLine();
                 Console.WriteLine();
@@ -107,13 +107,14 @@ namespace B02_TextRPG
                 int input = int.Parse(Console.ReadLine());
 
                 // input 값 확인하기 
-                if (storeItems.Count >= input && 1 <= input)
+                if (Item.storeItems.Count >= input && 1 <= input)
                 {
-                    Store selectedItem = storeItems[input - 1];
+                    Item selectedItem = Item.storeItems[input - 1];
                     if (selectedItem.Purchase)
                     {
                         // 아이템 구매
                         Console.WriteLine("이미 구매한 아이템 입니다!");
+                        ShowStore(character);
                     }
                     else if (character.Gold >= selectedItem.Gold)
                     {
@@ -121,8 +122,9 @@ namespace B02_TextRPG
                         character.Gold -= selectedItem.Gold;
                         selectedItem.Purchase = true;
                         // 구매한 아이템 리스트에 추가 
-                        //Inventory.InventoryItems.AddItem(selectedItem);  
+                        Item.InventoryItems.Add(selectedItem);
                         Console.WriteLine("구매를 완료했습니다!");
+                        ShowStore(character);
                     }
                     else if (character.Gold < selectedItem.Gold)
                     {
@@ -135,11 +137,7 @@ namespace B02_TextRPG
                 }
             }
 
-            // 아이템 추가 메소드
-            public static void AddItem(Store store)
-            {
-                storeItems.Add(store);
-            }
+          
 
             static void Resale(Character character)
             {
