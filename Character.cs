@@ -9,7 +9,6 @@ using System.Xml.Linq;
 
 namespace B02_TextRPG
 {
-
     public class Player
     {
         public int Level { get; set; } //캐릭터 레벨
@@ -17,52 +16,30 @@ namespace B02_TextRPG
         public string Job { get; set; } //캐릭터 직업
         public int Attack { get; set; } //캐릭터 공격력
         public int Defense { get; set; } // 캐릭터 방어력
-        public int Gold { get; set; } // 캐릭터 소지 골드  
-
-        public int Health //캐릭터 체력
+        public int Gold { get; set; } // 캐릭터 소지 골드
+        public int Health 
         {
-            get { return health; }
+            get 
+            { 
+                return Health; 
+            }
             set
             {
-<<<<<<< HEAD
-                Level = 1;
-                Name = name;
-                Job = job;
-                SetJobStats();
-                Gold = 10000;
+                Health = value; if (Health <= 0) { Die(); }
             }
+        
+        } //캐릭터 체력
 
-            public void SetJobStats() //직업정보
-            {
-                switch (Job)
-=======
-                health = value;
-                if (health <= 0)
->>>>>>> Monster-BJJ
-                {
-                    Die();
-                }
-            }
-        }
 
-<<<<<<< HEAD
-            public static void ShowInfo()
-            {  
-                Console.Clear();
-                Console.WriteLine("상태 보기");
-                Console.WriteLine("캐릭터의 정보가 표시됩니다");
-                Console.WriteLine();
-=======
         public Player(string name, string job)
         {
             Level = 1;
             Name = name;
             Job = job;
             SetJobStats();
-            Gold = 0;
+            Gold = 10000;
             Health = 100;
         }
-
         public void SetJobStats() //직업정보
         {
             switch (Job)
@@ -71,18 +48,14 @@ namespace B02_TextRPG
                     Attack = 10;
                     Defense = 5;
                     break;
-
                 case "마법사":
                     Attack = 8;
                     Defense = 4;
                     break;
->>>>>>> Monster-BJJ
-
                 case "도적":
                     Attack = 12;
                     Defense = 4;
                     break;
-
                 default:
                     Console.WriteLine("잘못된 직업을 선택했습니다. 기본 직업으로 설정됩니다.");
                     Attack = 10;
@@ -91,15 +64,12 @@ namespace B02_TextRPG
                     break;
             }
         }
-
         public void ShowInfo()
         {
             Console.Clear();
-
             Console.WriteLine("상태 보기");
             Console.WriteLine("캐릭터의 정보가 표시됩니다");
             Console.WriteLine();
-
             Console.WriteLine($"Lv. {Level:D2}");
             Console.WriteLine($"{Name} ( {Job} )");
             Console.WriteLine($"공격력 : {Attack}");
@@ -107,21 +77,11 @@ namespace B02_TextRPG
             Console.WriteLine($"체력 : {Health}");
             Console.WriteLine($"Gold : {Gold} G");
         }
-
-        private void Die()
-        {
-            Console.WriteLine("Character is dead.");
+        private void Die() 
+        { 
+            Console.WriteLine("Character is dead."); 
         }
-
-
-
     }
-
-
-
-
-
-
 }
 
 
