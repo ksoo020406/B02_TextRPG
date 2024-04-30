@@ -21,10 +21,11 @@ namespace B02_TextRPG
             damage = attackDamage;
         }
 
-        //public void Attack(Character character)
-        //{
-        //    character.TakeDamage(damage);
-        //} Character Class 에서 메서드 정의 필요
+        public void Attack(Character character)
+        {
+            character.TakeDamage(damage);
+        } 
+
         public void TakeDamage(int amount)
         {
             health -= amount;

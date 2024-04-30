@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace B02_TextRPG
 {
-    internal class Character
+    public class Character
     {
 
         static int level = 1;
@@ -65,6 +65,24 @@ namespace B02_TextRPG
                 }
             }
         }
+
+        public int Health { get; set; }
+
+        public void TakeDamage(int damage)
+        {
+            Health -= damage;
+            if (Health <= 0)
+            {
+                Die();
+            }
+        }
+
+        private void Die()
+        {
+            Console.WriteLine("Character is dead.");
+        }
+
+
 
     }
 
