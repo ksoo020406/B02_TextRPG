@@ -42,7 +42,7 @@ namespace B02_TextRPG
             Character character = new Character();
             GameManager gameManager = new GameManager();
             GameManager.StoreItems();
-            //Store_B02.Store.ShowStore(character);
+        
 
             static void mainMenu(Character character)
             {
@@ -82,7 +82,7 @@ namespace B02_TextRPG
                         Inventory.ShowInventory();
                         break;
                     case 4:
-                        Store_B02.Store.ShowStore(character);
+                        Store_B02.ShowStore(character);
                         break;
                 }
                 //mainMenu(character);// 문제가 발생할 수 있으니 끝날 때 다시 호출해서 잡아주기.

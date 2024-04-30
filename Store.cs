@@ -8,27 +8,10 @@ namespace B02_TextRPG
 {
     internal class Store_B02
     {
-        public class Store
-        {
-            
-            public string Name { get; set; }  // 아이템 이름 
-            public string Description { get; set; }  // 아이템 설명 
-            public int AttackPower { get; set; }  // 공격력 
-            public int DefensePower { get; set; }   // 방어력 
-            public int Gold { get; set; } // 가격 
+        public Store_B02() 
+        { 
 
-            public bool Purchase { get; set; }  
-            public Store(string name, string des, int attack, int defense, int gold)
-            {
-                Name = name;
-                Description = des;
-                AttackPower = attack;
-                DefensePower = defense;
-                Gold = gold;
-                Purchase = false;
-            }
-
-            //public static List<Item> storeItems = new List<Item>();  // 상점 아이템
+        }
 
             public static void ShowStore(Character character)
             {
@@ -209,5 +192,6 @@ namespace B02_TextRPG
 
 
         }
-    }
+    
+
 
