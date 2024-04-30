@@ -7,11 +7,11 @@ namespace B02_TextRPG
 {
     public class Monster
     {
-        public string name;
-        public int level;
-        public int health;
-        public int damage;
-        
+        public string Name { get; set; }
+        public int Level { get; set; }
+        public int Health { get; set; }
+        public int Damage { get; set; }
+
 
         public Monster(int monsterLevel, string monsterName, int monsterHealth, int attackDamage)
         {
