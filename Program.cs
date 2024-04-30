@@ -5,7 +5,7 @@ namespace B02_TextRPG
     public class GameManager
     {
         public GameManager() { }
-        public static void StoreItems()
+         public static void StoreItems()
         {
             Store_B02.Store Armor1 = new Store_B02.Store("수련자의 갑옷", " 수련에 도움을 주는 갑옷입니다. ", 0, 5, 1000);
             Store_B02.Store Armor = new Store_B02.Store("무쇠 갑옷", "무쇠로 만들어져 튼튼한 갑옷입니다.", 0, 9, 2000);
@@ -35,6 +35,7 @@ namespace B02_TextRPG
 
             Character character = new Character();
             GameManager gameManager = new GameManager();
+            GameManager.StoreItems();
             Store_B02.Store.ShowStore(character);
 
 
