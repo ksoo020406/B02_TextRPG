@@ -18,7 +18,7 @@
 #### 진행사항
 강소은 : 메인메뉴에서 선택지를 고를 때 주어진 숫자 외의 다른 입력이 입력될 경우 '잘못된 입력입니다' 출력 필요.
 이는 다른 메뉴에서도 공통된 사항이기 때문에 공유가 될 ConsoleUtility 스크립트 제작. ConsoleUtility스크립트에 해당 기능을 해줄 PromptMenuChoice 함수 제작.
-         
+
             // 2. 선택한 결과를 검증한다.
             int choice = ConsoleUtility.PromptMenuChoice(1, 4);
 
