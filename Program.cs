@@ -2,7 +2,7 @@
 
 namespace B02_TextRPG
 {
-    public class GameManager
+    public class GameManager 
     {
         private Player player;
 
@@ -62,7 +62,7 @@ namespace B02_TextRPG
                 switch (choice)
                 {
                     case 1:
-                        Player.ShowInfo();
+                        player.ShowInfo();
                         break;
                     case 2:
                         //전투하기 메뉴 메소드

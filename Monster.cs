@@ -21,18 +21,19 @@ namespace B02_TextRPG
             MonsterDamage = monsterDamage;
         }
 
+        //public void TakeDamage(int amount)
+        //{
+        //    MonsterHealth -= amount;
+        //    if (MonsterHealth <= 0)
+        //    {
+        //        Die();
+        //    }
+        //}
+
         public void Attack(Player player)
         {
-           player.TakeDamage(MonsterDamage);
-        } 
-
-        public void TakeDamage(int amount)
-        {
-            MonsterHealth -= amount;
-            if (MonsterHealth <= 0)
-            {
-                Die();
-            }
+            //player._health -= MonsterDamage;
+           // player.TakeDamage(MonsterDamage);
         }
         private void Die()
         {

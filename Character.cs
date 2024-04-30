@@ -17,15 +17,16 @@ namespace B02_TextRPG
         public int Attack { get; set; } //캐릭터 공격력
         public int Defense { get; set; } // 캐릭터 방어력
         public int Gold { get; set; } // 캐릭터 소지 골드
+        public int _health;
         public int Health 
         {
-            get 
-            { 
-                return Health; 
+            get
+            {
+                return _health;
             }
             set
             {
-                Health = value; if (Health <= 0) { Die(); }
+                _health = value; if (_health <= 0) { Die(); }
             }
         
         } //캐릭터 체력
