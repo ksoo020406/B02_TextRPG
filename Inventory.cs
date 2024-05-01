@@ -6,8 +6,7 @@ namespace B02_TextRPG
 {
     internal class Inventory
     {
-        public static Player player; //플레이어 정보 저장
-        public static void ShowInventory()
+        public static void ShowInventory(Player player)
         {
             Console.Clear();
 
@@ -43,11 +42,11 @@ namespace B02_TextRPG
                     gameManager.MainMenu(player);
                     break;
                 case 1:
-                    EquipMenu();
+                    EquipMenu(player);
                     break;
             }
         }
-        private static void EquipMenu()
+        private static void EquipMenu(Player player)
         {
             Console.Clear();
 
@@ -73,11 +72,11 @@ namespace B02_TextRPG
             switch (choiceItem)
             {
                 case 0:
-                    ShowInventory();
+                    ShowInventory(player);
                     break;
                 default:
                     Item.InventoryItems[choiceItem - 1].ToggleEquip();
-                    EquipMenu(); // 장비 선택 하고서도 장착관리에 남아있어라.
+                    EquipMenu(player); // 장비 선택 하고서도 장착관리에 남아있어라.
                     break;
             }
         }
