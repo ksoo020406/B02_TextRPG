@@ -19,19 +19,7 @@ namespace B02_TextRPG
         public int Defense { get; set; } // 캐릭터 방어력
         public int DefensePlus { get; set; }
         public int Gold { get; set; } // 캐릭터 소지 골드
-        public int _health;
-        public int Health 
-        {
-            get
-            {
-                return _health;
-            }
-            set
-            {
-                _health = value; if (_health <= 0) { Die(); }
-            }
-        
-        } //캐릭터 체력
+        public int Health { get; set; } //캐릭터 체력
 
 
         public Player(string name, string job)
@@ -69,20 +57,20 @@ namespace B02_TextRPG
                     break;
             }
         }
-        public static void ShowInfo (int Level, string Name, string Job, int Attack, int Defense, int Health, int Gold,int AttackPlus,int DefensePlus)
+        public static void ShowInfo(int Level, string Name, string Job, int Attack, int Defense, int Health, int Gold, int AttackPlus, int DefensePlus)
         {
-           
+
             Console.Clear();
             Console.WriteLine("상태 보기");
             Console.WriteLine("캐릭터의 정보가 표시됩니다");
             Console.WriteLine();
             Console.WriteLine($"Lv. {Level:D2}");
             Console.WriteLine($"{Name} ( {Job} )");
-            if(AttackPlus > 0)
+            if (AttackPlus > 0)
             {
                 Console.WriteLine($"공격력 : {Attack} (+ {AttackPlus})");
             }
-            else if(AttackPlus ==0)
+            else if (AttackPlus == 0)
             {
                 Console.WriteLine($"공격력 : {Attack}");
             }
@@ -105,12 +93,22 @@ namespace B02_TextRPG
             {
                 case 0:
                     return;
-                 
+
             }
         }
-        private void Die() 
-        { 
-            Console.WriteLine("Character is dead."); 
+        public void DamageHealth(int damage)
+        {
+            Health -= damage; 
+            if (Health <= 0) 
+            {
+                Die(); 
+            }
+        }
+
+
+        private void Die()
+        {
+            Console.WriteLine("Character is dead.");
         }
     }
 }

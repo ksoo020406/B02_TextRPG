@@ -10,15 +10,15 @@ namespace B02_TextRPG
         public string MonsterName { get; set; }
         public int MonsterLevel { get; set; }
         public int MonsterHealth { get; set; }
-        public int MonsterDamage { get; set; }
+        public int MonsterPower { get; set; }
 
 
-        public Monster(string monsterName, int monsterLevel, int monsterHealth, int monsterDamage)
+        public Monster(string monsterName, int monsterLevel, int monsterHealth, int monsterPower)
         {
             MonsterLevel = monsterLevel;
             MonsterName = monsterName;
             MonsterHealth = monsterHealth;
-            MonsterDamage = monsterDamage;
+            MonsterPower = monsterPower;
         }
 
 
