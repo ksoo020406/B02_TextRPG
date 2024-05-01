@@ -39,7 +39,7 @@ namespace B02_TextRPG
             {
                 // 구성
                 // 0. 화면 정리
-               // Console.Clear();
+             Console.Clear();
 
             // 1. 선택 멘트를 준다.
             Console.WriteLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"); // 60개 
@@ -89,7 +89,7 @@ namespace B02_TextRPG
         static void Main(string[] args)
         {
             GameManager gameManager = new GameManager();
-            gameManager.mainMenu();
+            Start.startScene();
         }
     }
 }
