@@ -69,7 +69,7 @@ namespace B02_TextRPG
                         break;
 
                     case 2:
-                        //전투하기 메뉴 메소드
+                        DunGeon.StartDunGeon(player);
                         break;
                     case 3:
                         Inventory.ShowInventory();
