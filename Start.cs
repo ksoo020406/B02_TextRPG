@@ -31,14 +31,15 @@ namespace B02_TextRPG
             Console.WriteLine("직업을 선택하세요 (전사, 마법사, 도적): ");
 
             string job = Console.ReadLine();   
-            Console.WriteLine("당신의 직업은 <" + job + "> 입니다.");
+            Console.WriteLine("당신은 <" + job + "> 이(가) 되기를 선택했습니다.");
 
             player = new Player(name, job);
 
 
             Console.WriteLine();
-            Console.WriteLine("마을로 들어가려면 0번을 입력하세요");
-            
+            Console.WriteLine("마을로 가려면 아무 키나 입력하세요");
+            Console.ReadKey();
+
 
 
             GameManager gameManager = new GameManager(); //게임매니저 인스턴스 생성      
