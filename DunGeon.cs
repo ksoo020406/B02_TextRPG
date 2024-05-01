@@ -13,6 +13,7 @@ namespace B02_TextRPG
         
         public static void StartDunGeon(Player player)
         {
+            
             Console.Clear();
             Console.WriteLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"); // 60개 
             Console.WriteLine("스파르타 마을에 오신 여러분 환영합니다.");
@@ -27,13 +28,13 @@ namespace B02_TextRPG
             Console.WriteLine();
 
             int input = ConsoleUtility.PromptMenuChoice(0,3);
-            
+            BattleManager battleManager = new BattleManager();
             switch(input)
             {
                 case 1: Player.ShowInfo
                         (player.Level, player.Name, player.Job, player.Attack, player.Defense, player.Health, player.Gold, player.AttackPlus, player.DefensePlus);
                     break;
-                case 2: // 전투시작 메소드
+                case 2: battleManager.StartBattle(player);
                     break;
                 case 3: // 포션 먹는 메소드 
                     potionUse(player);
@@ -59,13 +60,13 @@ namespace B02_TextRPG
                 case 1: // 포션이 충분하고 체력이 100 보다 작을 때 
                     if (player.Potion > 0 && player.Health < 100)
                     {
-                        player._health += 30;
+                        player.Health += 30;
                         Console.WriteLine("회복(+30)을 완료했습니다!");
 
                         //최대 체력을 넘기는 경우 100으로 체력 설정
-                        if (player._health > 100)
+                        if (player.Health > 100)
                         {
-                            player._health = 100;
+                            player.Health = 100;
                         }
 
                         // 포션 갯수 감소
