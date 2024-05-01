@@ -5,13 +5,24 @@ using System.Collections.Generic;
 
 namespace B02_TextRPG
 {
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            GameManager gameManager = new GameManager();
+            Start.startScene();
+            BattleManager battleManager = new BattleManager();
+            
+        }
+    }
     public class GameManager
     {
         private Player player;
+        private BattleManager battleManager;
 
         public GameManager()
         {
-
+            battleManager = new BattleManager();
         }
 
 
@@ -69,7 +80,7 @@ namespace B02_TextRPG
                         break;
 
                     case 2:
-                        //전투하기 메뉴 메소드
+                        battleManager.StartBattle(player);
                         break;
                     case 3:
                         Inventory.ShowInventory();
@@ -88,14 +99,5 @@ namespace B02_TextRPG
 
     }
 
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            GameManager gameManager = new GameManager();
-            Start.startScene();
-            BattleManager battleManager = new BattleManager();
-            battleManager.StartBattle();
-        }
-    }
+    
 }

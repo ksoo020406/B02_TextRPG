@@ -1,15 +1,52 @@
 ﻿using B02_TextRPG;
 using System;
 
-public class BattleManager
+
+namespace B02_TextRPG
 {
 
-    private Random random = new Random();
-
-    public void StartBattle()
+    public class BattleManager
     {
-        // 전투 시작 로직
+
+        private Random random = new Random();
+
+        public void StartBattle(Player player)
+        {
+
+            Console.Clear(); 
+            MonsterManager monsterManager = new MonsterManager();
+            List<Monster> monsters = monsterManager.GetMonsters();
+
+            Console.WriteLine("Battle!!");
+            Console.WriteLine();
+
+            foreach (var monster in monsters)
+            {
+                Console.WriteLine($"Lv.{monster.MonsterLevel} {monster.MonsterName} HP {monster.MonsterHealth}");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("[내정보]");
+            Console.WriteLine($"Lv.{player.Level} {player.Name} ({player.Job})");
+            Console.WriteLine($"HP {player.Health}/100");
+            Console.WriteLine();
+            Console.WriteLine("1. 공격");
+            Console.WriteLine();
+            Console.WriteLine("원하시는 행동을 입력해주세요.");
+
+            string input = Console.ReadLine();
+
+            switch (input)
+            {
+                case "1":
+                    //공격 로직 구현
+                    break;
+                default:
+                    Console.WriteLine("잘못된 입력입니다.");
+                    break;
+            }
+        }
+
+
     }
-
-
 }
