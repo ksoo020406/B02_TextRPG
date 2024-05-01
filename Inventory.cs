@@ -1,11 +1,12 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System.Numerics;
+using System.Security.Cryptography.X509Certificates;
 using static B02_TextRPG.Store_B02;
 
 namespace B02_TextRPG
 {
     internal class Inventory
     {
-
+        public static Player player; //플레이어 정보 저장
         public static void ShowInventory()
         {
             Console.Clear();
@@ -39,7 +40,7 @@ namespace B02_TextRPG
             {
                 case 0:
                     GameManager gameManager = new GameManager();
-                    gameManager.MainMenu();
+                    gameManager.MainMenu(player);
                     break;
                 case 1:
                     EquipMenu();

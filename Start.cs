@@ -8,6 +8,8 @@ namespace B02_TextRPG
 {
     internal class Start
     {
+
+        public static Player player; //플레이어 정보 저장
         public static void startScene()
         {
 
@@ -31,18 +33,25 @@ namespace B02_TextRPG
             string job = Console.ReadLine();   
             Console.WriteLine("당신의 직업은 <" + job + "> 입니다.");
 
-            Player player = new Player(name, job);
+            player = new Player(name, job);
 
 
             Console.WriteLine();
-            Console.WriteLine("마을로 들어가려면 아무 키나 입력하세요");
-            Console.ReadKey(); // 아무 키나 누르면 마을로 이동
+            Console.WriteLine("마을로 들어가려면 0번을 입력하세요");
+            
 
-            
+
             GameManager gameManager = new GameManager(); //게임매니저 인스턴스 생성      
-            gameManager.StoreItems();
-            gameManager.MainMenu();  // 마을로 가기
-            
+            gameManager.StoreItems(player);
+            gameManager.MainMenu(player);  // 플레이어 정보를 MainMenu 메서드에 전달
+
+            int choice = ConsoleUtility.PromptMenuChoice(0, 0);
+            if (choice == 0)
+            {
+                // 메인 메뉴로 돌아가기
+                return;
+            }
+
         }
 
        

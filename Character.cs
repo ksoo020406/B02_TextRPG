@@ -101,7 +101,7 @@ namespace B02_TextRPG
             Console.WriteLine("0. 나가기");
             Console.WriteLine("");
 
-            switch (ConsoleUtility.PromptMenuChoice(0, 1))
+            switch (ConsoleUtility.PromptMenuChoice(0, 0))
             {
                 case 0:
                     return;

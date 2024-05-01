@@ -8,13 +8,14 @@ namespace B02_TextRPG
 {
     internal class Store_B02
     {
-        public Store_B02()
+        public Store_B02(Player player)
         {
 
         }
 
         public static void ShowStore(Player player)
         {
+
             Console.Clear();
 
             Console.WriteLine("**상점**");
