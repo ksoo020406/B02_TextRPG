@@ -55,7 +55,9 @@ namespace B02_TextRPG
             }
             else
             {
-                // 다시 메인 화면으로 
+                // 다시 메인 화면으로 현재 메소드 종료 
+                return;
+                
             }
 
 
@@ -125,8 +127,6 @@ namespace B02_TextRPG
         static void Resale(Player player)
         {
             Console.Clear();
-
-
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("상점 - 아이템 판매");
@@ -142,7 +142,7 @@ namespace B02_TextRPG
             {
                 if (Item.InventoryItems[i].Purchase)
                 {
-                    string equipped = Item.InventoryItems.Contains(Item.InventoryItems[i]) ? "[E]" : "";
+                    string equipped = Item.equippedItems.Contains(Item.InventoryItems[i]) ? "[E]" : "";
                     string Statistics = Item.InventoryItems[i].AttackPower > 0 ? $"공격력: {Item.InventoryItems[i].AttackPower}" :
                       Item.InventoryItems[i].DefensePower > 0 ? $"방어력: {Item.InventoryItems[i].DefensePower}" : "";
                     Console.WriteLine($"{index}. {equipped} {Item.InventoryItems[i].Name} | {Statistics} | {Item.InventoryItems[i].Description}");
@@ -159,7 +159,7 @@ namespace B02_TextRPG
             {
                 case 0: return;
                 default:
-                    Console.Clear();
+                //    Console.Clear();
 
                     // 사용자 입력에 따라 선택된 아이템 인덱스 계산
                     int selectedItemIndex = input - 1;
