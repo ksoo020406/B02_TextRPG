@@ -34,9 +34,26 @@ namespace B02_TextRPG
             switch (ConsoleUtility.PromptMenuChoice(0, 1))
             {
                 case 0:
-                    return;
+                    GameManager gameManager = new GameManager();
+                    gameManager.MainMenu();
+                    break;
                 case 1:
-                    //EquipMenu();
+                    EquipMenu();
+                    break;
+            }
+        }
+        private static void EquipMenu()
+        {
+            Console.Clear();
+
+            Console.WriteLine("");
+            Console.WriteLine("0. 돌아가기");
+            Console.WriteLine("");
+
+            switch (ConsoleUtility.PromptMenuChoice(0,0))
+            {
+                case 0:
+                    ShowInventory();
                     break;
             }
         }
