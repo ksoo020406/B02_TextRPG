@@ -2,17 +2,17 @@
 
 namespace B02_TextRPG
 {
-    public class GameManager 
+    public class GameManager
     {
         private Player player;
 
-        public GameManager() 
+        public GameManager()
         {
-            StoreItems();
+
         }
 
 
-        public  void StoreItems()
+        public void StoreItems()
         {
             player = new Player("왈왈", "전사");
 
@@ -31,30 +31,30 @@ namespace B02_TextRPG
             Item.storeItems.Add(Sword);
             Item.storeItems.Add(axe);
             Item.storeItems.Add(sujin);
-        }        
+        }
 
-         public void mainMenu()
-         {
+        public void MainMenu()
+        {
             while (true)
             {
                 // 구성
                 // 0. 화면 정리
-             Console.Clear();
+                Console.Clear();
 
-            // 1. 선택 멘트를 준다.
-            Console.WriteLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"); // 60개 
-            Console.WriteLine("스파르타 마을에 오신 여러분 환영합니다.");
-            Console.WriteLine("이곳에서 던전으로 들어가기 전활동을 할 수 있습니다.");
-            Console.WriteLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"); // 60개 
-            Console.WriteLine("");
+                // 1. 선택 멘트를 준다.
+                Console.WriteLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"); // 60개 
+                Console.WriteLine("스파르타 마을에 오신 여러분 환영합니다.");
+                Console.WriteLine("이곳에서 던전으로 들어가기 전활동을 할 수 있습니다.");
+                Console.WriteLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"); // 60개 
+                Console.WriteLine("");
 
-            Console.WriteLine("1. 상태보기");
-            Console.WriteLine("2. 전투하기");
-            Console.WriteLine("3. 인벤토리");
-            Console.WriteLine("4. 상점");
-            Console.WriteLine("");
-            Console.WriteLine();
-          
+                Console.WriteLine("1. 상태보기");
+                Console.WriteLine("2. 전투하기");
+                Console.WriteLine("3. 인벤토리");
+                Console.WriteLine("4. 상점");
+                Console.WriteLine("");
+                Console.WriteLine();
+
 
                 // 2. 선택한 결과를 검증한다.
                 int choice = ConsoleUtility.PromptMenuChoice(1, 4);
@@ -62,7 +62,7 @@ namespace B02_TextRPG
                 switch (choice)
                 {
                     case 1:
-                        player.ShowInfo();
+                        Player.ShowInfo(player.Level, player.Name, player.Job, player.Attack, player.Defense, player.Health, player.Gold);
                         break;
                     case 2:
                         //전투하기 메뉴 메소드
@@ -74,19 +74,19 @@ namespace B02_TextRPG
                         Store_B02.ShowStore(player);
                         break;
                 }
-                
-                mainMenu();// 문제가 발생할 수 있으니 끝날 때 다시 호출해서 잡아주기.
+
+                MainMenu();// 문제가 발생할 수 있으니 끝날 때 다시 호출해서 잡아주기.
 
             }
-            
+
         }
 
 
     }
 
-    internal class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             GameManager gameManager = new GameManager();
             Start.startScene();

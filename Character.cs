@@ -51,21 +51,21 @@ namespace B02_TextRPG
                     break;
                 case "마법사":
                     Attack = 8;
-                    Defense = 4;
+                    Defense = 6;
                     break;
                 case "도적":
                     Attack = 12;
                     Defense = 4;
                     break;
                 default:
-                    Console.WriteLine("잘못된 직업을 선택했습니다. 기본 직업으로 설정됩니다.");
+                    Console.WriteLine("잘못된 직업을 선택했습니다. 기본 직업 <전사> 으로 설정됩니다.");
                     Attack = 10;
                     Defense = 5;
                     Job = "전사";
                     break;
             }
         }
-        public void ShowInfo()
+        public static void ShowInfo (int Level, string Name, string Job, int Attack, int Defense, int Health, int Gold)
         {
             Console.Clear();
             Console.WriteLine("상태 보기");
@@ -77,6 +77,17 @@ namespace B02_TextRPG
             Console.WriteLine($"방어력 : {Defense}");
             Console.WriteLine($"체력 : {Health}");
             Console.WriteLine($"Gold : {Gold} G");
+
+            Console.WriteLine("");
+            Console.WriteLine("0. 나가기");
+            Console.WriteLine("");
+
+            switch (ConsoleUtility.PromptMenuChoice(0, 1))
+            {
+                case 0:
+                    return;
+                 
+            }
         }
         private void Die() 
         { 
