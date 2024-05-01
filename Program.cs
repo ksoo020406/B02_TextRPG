@@ -62,7 +62,7 @@ namespace B02_TextRPG
                 switch (choice)
                 {
                     case 1:
-                        player.ShowInfo();
+                        Player.ShowInfo(player.Level, player.Name, player.Job, player.Attack, player.Defense, player.Health, player.Gold);
                         break;
                     case 2:
                         //전투하기 메뉴 메소드
