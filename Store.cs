@@ -105,6 +105,10 @@ namespace B02_TextRPG
                 {
                     // 재화 감소
                     player.Gold -= selectedItem.Gold;
+                    // 능력치 증가
+                    player.AttackPlus += selectedItem.AttackPower;
+                    player.DefensePlus += selectedItem.DefensePower;
+                    // 구매 
                     selectedItem.Purchase = true;
                     // 구매한 아이템 리스트에 추가 
                     Item.InventoryItems.Add(selectedItem);
@@ -178,8 +182,8 @@ namespace B02_TextRPG
                         player.Gold += (int)(selectedItem.Gold * 0.85);
                         Item.InventoryItems.Remove(selectedItem);
                         // 다시 원상태로
-                        player.Attack -= selectedItem.AttackPower;
-                        player.Defense -= selectedItem.DefensePower;
+                        player.AttackPlus -= selectedItem.AttackPower;
+                        player.DefensePlus -= selectedItem.DefensePower;
 
                     }
                     else
