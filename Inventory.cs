@@ -76,9 +76,25 @@ namespace B02_TextRPG
                     break;
                 default:
                     Item.InventoryItems[choiceItem - 1].ToggleEquip();
+
+                    Item selectedItem = Item.InventoryItems[choiceItem - 1];
+                    // 장비를 하면 능력치 더하기
+                    if (selectedItem.Equipped)
+                    {
+                        player.AttackPlus += selectedItem.AttackPower;
+                        player.DefensePlus += selectedItem.DefensePower;
+                    }
+                    // 아니면 능력치 빼기
+                    else
+                    {
+                        player.AttackPlus -= selectedItem.AttackPower;
+                        player.DefensePlus -= selectedItem.DefensePower;
+                    }
+
                     EquipMenu(player); // 장비 선택 하고서도 장착관리에 남아있어라.
                     break;
             }
+
         }
     }
 }
