@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace B02_TextRPG
 {
-    public class Start
+    internal class Start
     {
+
+        public static Player player; //플레이어 정보 저장
         public static void startScene()
         {
 
@@ -23,27 +25,26 @@ namespace B02_TextRPG
             Console.Write(">>");
 
             string name = Console.ReadLine();
-            Console.WriteLine("당신의 이름은 <" + name + "> 입니다.");
+            Console.WriteLine("당신의 이름은 <" + name + "> 입니다."); 
 
             Console.WriteLine();
             Console.WriteLine("직업을 선택하세요 (전사, 마법사, 도적): ");
 
-            string job = Console.ReadLine();
-            Console.WriteLine("당신의 직업은 <" + job + "> 입니다.");
+            string job = Console.ReadLine();   
+            Console.WriteLine("당신은 <" + job + "> 이(가) 되기를 선택했습니다.");
 
-            Player player = new Player(name, job);
+            player = new Player(name, job);
 
 
             Console.WriteLine();
-            Console.WriteLine("마을로 들어가려면 0번을 입력하세요");
+            Console.WriteLine("마을로 가려면 아무 키나 입력하세요");
+            Console.ReadKey();
 
 
 
             GameManager gameManager = new GameManager(); //게임매니저 인스턴스 생성      
             gameManager.StoreItems(player);
             gameManager.MainMenu(player);  // 플레이어 정보를 MainMenu 메서드에 전달
-            BattleManager battleManager = new BattleManager(); // BattleManager 인스턴스 생성
-            battleManager.StartBattle(player); // 생성된 플레이어 정보를 StartBattle 메서드에 전달
 
             int choice = ConsoleUtility.PromptMenuChoice(0, 0);
             if (choice == 0)
@@ -54,8 +55,8 @@ namespace B02_TextRPG
 
         }
 
-
+       
     }
 
-
+    
 }
