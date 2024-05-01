@@ -1,5 +1,7 @@
 ﻿using B02_TextRPG;
 using System;
+using System.Collections.Generic;
+using System.Numerics;
 
 
 namespace B02_TextRPG
@@ -8,14 +10,12 @@ namespace B02_TextRPG
     public class BattleManager
     {
 
-        private Random random = new Random();
-
         public void StartBattle(Player player)
         {
-
-            Console.Clear(); 
+            Random random = new Random();
+            Console.Clear();
             MonsterManager monsterManager = new MonsterManager();
-            List<Monster> monsters = GetRandomMonsters();
+            List<Monster> monsters = monsterManager.GetRandomMonsters();
 
             Console.WriteLine("Battle!!");
             Console.WriteLine();
@@ -39,29 +39,18 @@ namespace B02_TextRPG
             switch (input)
             {
                 case "1":
-                    //공격 로직 구현
+                    //공격 로직 구현 
                     break;
-                default:
+                case "2":
+                    //도망 로직 구현
+                    break;
+                case "3":
                     Console.WriteLine("잘못된 입력입니다.");
                     break;
             }
         }
 
-        private List<Monster> GetRandomMonsters()
-        {
-            MonsterManager monsterManager = new MonsterManager();
-            List<Monster> allMonsters = monsterManager.GetMonsters();
-            List<Monster> randomMonsters = new List<Monster>();
-            List<Monster> selectedMonsters = new List<Monster>();
-            int numberOfMonsters = random.Next(1, 5);
 
-            for (int i = 0; i < numberOfMonsters; i++)
-            {
-                int randomIndex = random.Next(0, allMonsters.Count);
-                selectedMonsters.Add(allMonsters[randomIndex]);
-            }
-
-            return selectedMonsters;
-        }
+       
     }
 }

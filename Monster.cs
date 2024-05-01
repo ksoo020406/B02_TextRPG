@@ -11,6 +11,7 @@ namespace B02_TextRPG
         public int MonsterLevel { get; set; }
         public int MonsterHealth { get; set; }
         public int MonsterPower { get; set; }
+        public bool IsDead { get; set; }
 
 
         public Monster(string monsterName, int monsterLevel, int monsterHealth, int monsterPower)
@@ -18,7 +19,8 @@ namespace B02_TextRPG
             MonsterLevel = monsterLevel;
             MonsterName = monsterName;
             MonsterHealth = monsterHealth;
-            MonsterPower = monsterPower;    
+            MonsterPower = monsterPower;
+            IsDead = false;
         }
 
 

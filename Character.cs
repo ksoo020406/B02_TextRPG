@@ -20,7 +20,7 @@ namespace B02_TextRPG
         public int DefensePlus { get; set; }
         public int Gold { get; set; } // 캐릭터 소지 골드
         public int Health { get; set; }//캐릭터 체력
-
+        
         public int Potion { get; set; }
        
         

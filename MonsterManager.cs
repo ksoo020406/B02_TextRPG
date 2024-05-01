@@ -8,6 +8,7 @@ namespace B02_TextRPG
 {
     public class MonsterManager
     {
+        private Random random = new Random();
         private List<Monster> monsters;
 
         public MonsterManager()
@@ -28,5 +29,21 @@ namespace B02_TextRPG
             return monsters;
         }
 
+        public List<Monster> GetRandomMonsters()
+        {
+            MonsterManager monsterManager = new MonsterManager();
+            List<Monster> allMonsters = monsterManager.GetMonsters();
+            List<Monster> randomMonsters = new List<Monster>();
+
+            int numMonsters = random.Next(1, 5);
+
+            for (int i = 0; i < numMonsters; i++)
+            {
+                int randomIndex = random.Next(0, allMonsters.Count);
+                randomMonsters.Add(allMonsters[randomIndex]);
+            }
+
+            return randomMonsters;
+        }
     }
 }
