@@ -21,5 +21,32 @@
                 Console.WriteLine("잘못된 입력입니다.");
             }
         }
+
+        // 작성 된 글자수가 몇 글자 짜리인가 판단
+        public static int GetPrintTextLength(string str)
+        {
+            int length = 0;
+            foreach (char c in str)
+            {
+                if (char.GetUnicodeCategory(c) == System.Globalization.UnicodeCategory.OtherLetter)
+                {
+                    length += 2; // 한글과 같은 넓은 문자에 대해 길이를 2로 취급
+                }
+                else
+                {
+                    length += 1; // 나머지 문자에 대해 길이를 1로 취급
+                }
+            }
+            return length;
+        }
+
+        // 고정폭의 글자 출력
+        // totalLength = 글자수 제한
+        public static string SpacingLetters(string str, int totalLength)
+        {
+            int curentLength = GetPrintTextLength(str);
+            int padding = totalLength - curentLength;
+            return str.PadRight(str.Length + padding);
+        }
     }
 }
