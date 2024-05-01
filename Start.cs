@@ -46,12 +46,7 @@ namespace B02_TextRPG
             gameManager.StoreItems(player);
             gameManager.MainMenu(player);  // 플레이어 정보를 MainMenu 메서드에 전달
 
-            int choice = ConsoleUtility.PromptMenuChoice(0, 0);
-            if (choice == 0)
-            {
-                // 메인 메뉴로 돌아가기
-                return;
-            }
+           
 
         }
 

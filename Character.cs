@@ -92,12 +92,20 @@ namespace B02_TextRPG
 
             Console.WriteLine("");
             Console.WriteLine("0. 나가기");
+
+            Console.WriteLine("1. 퀘스트 입장"); ///퀘스트입장
+
             Console.WriteLine("");
 
-            switch (ConsoleUtility.PromptMenuChoice(0, 0))
+            switch (ConsoleUtility.PromptMenuChoice(0, 1))
             {
                 case 0:
                     return;
+
+                case 1:
+                    Quest.quest();  ///퀘스트입장
+                    break;
+                    
 
             }
         }
