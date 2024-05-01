@@ -1,4 +1,7 @@
 ﻿using System.Security.Cryptography.X509Certificates;
+using System.Collections.Generic;
+
+
 
 namespace B02_TextRPG
 {
@@ -90,6 +93,7 @@ namespace B02_TextRPG
         {
             GameManager gameManager = new GameManager();
             Start.startScene();
+          
         }
     }
 }
