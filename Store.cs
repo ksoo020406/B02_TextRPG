@@ -127,8 +127,6 @@ namespace B02_TextRPG
         static void Resale(Player player)
         {
             Console.Clear();
-            Console.WriteLine();
-            Console.WriteLine();
             Console.WriteLine("상점 - 아이템 판매");
             Console.WriteLine("필요한 아이템을 얻을 수 있는 상점입니다.");
             Console.WriteLine();
@@ -166,11 +164,14 @@ namespace B02_TextRPG
                     Item selectedItem = Item.InventoryItems[selectedItemIndex];
                     if (selectedItemIndex >= 0 && selectedItemIndex < Item.InventoryItems.Count)
                     {
+                        Console.WriteLine();
+                        Console.WriteLine();
                         Console.WriteLine($"'{selectedItem.Name}'을(를) {selectedItem.Gold * 0.85} G에 판매하였습니다.");
 
                         // 장착중이면 해제
                         if (Item.InventoryItems.Contains(selectedItem))
                         {
+                            selectedItem.Purchase = false;
                             Item.InventoryItems.Remove(selectedItem);
                         }
                         // 아이템 판매 및 골드 추가
@@ -188,6 +189,9 @@ namespace B02_TextRPG
                     break;
 
             }
+            Console.WriteLine("\n아무 키나 누르세요...");
+            Console.ReadKey();
+            ShowStore(player);
         }
 
 
