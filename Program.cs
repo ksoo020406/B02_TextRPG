@@ -15,9 +15,9 @@ namespace B02_TextRPG
         }
 
 
-        public void StoreItems()
+        public void StoreItems(Player player)
         {
-            player = new Player("왈왈", "전사");
+            //player = new Player("왈왈", "전사");
 
             Item Armor1 = new Item("수련자의 갑옷", " 수련에 도움을 주는 갑옷입니다. ", 0, 5, 1000);
             Item Armor = new Item("무쇠 갑옷", "무쇠로 만들어져 튼튼한 갑옷입니다.", 0, 9, 2000);
@@ -36,7 +36,7 @@ namespace B02_TextRPG
             Item.storeItems.Add(sujin);
         }
 
-        public void MainMenu()
+        public void MainMenu(Player player)
         {
             while (true)
             {
@@ -65,20 +65,21 @@ namespace B02_TextRPG
                 switch (choice)
                 {
                     case 1:
-                        Player.ShowInfo(player.Level, player.Name, player.Job, player.Attack, player.Defense, player.Health, player.Gold,player.AttackPlus,player.DefensePlus);
+                        Player.ShowInfo(player.Level, player.Name, player.Job, player.Attack, player.Defense, player.Health, player.Gold, player.AttackPlus, player.DefensePlus);
                         break;
+
                     case 2:
                         //전투하기 메뉴 메소드
                         break;
                     case 3:
                         Inventory.ShowInventory();
                         break;
-                    case 4:
+                    case 4:                        
                         Store_B02.ShowStore(player);
                         break;
                 }
 
-                MainMenu();// 문제가 발생할 수 있으니 끝날 때 다시 호출해서 잡아주기.
+                MainMenu(player);// 문제가 발생할 수 있으니 끝날 때 다시 호출해서 잡아주기.
 
             }
 
