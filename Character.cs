@@ -35,7 +35,6 @@ namespace B02_TextRPG
         
         } //캐릭터 체력
 
-
         public Player(string name, string job)
         {
             Level = 1;
@@ -72,20 +71,20 @@ namespace B02_TextRPG
                     break;
             }
         }
-        public static void ShowInfo (int Level, string Name, string Job, int Attack, int Defense, int Health, int Gold,int AttackPlus,int DefensePlus)
+        public static void ShowInfo(int Level, string Name, string Job, int Attack, int Defense, int Health, int Gold, int AttackPlus, int DefensePlus)
         {
-           
+
             Console.Clear();
             Console.WriteLine("상태 보기");
             Console.WriteLine("캐릭터의 정보가 표시됩니다");
             Console.WriteLine();
             Console.WriteLine($"Lv. {Level:D2}");
             Console.WriteLine($"{Name} ( {Job} )");
-            if(AttackPlus > 0)
+            if (AttackPlus > 0)
             {
                 Console.WriteLine($"공격력 : {Attack} (+ {AttackPlus})");
             }
-            else if(AttackPlus ==0)
+            else if (AttackPlus == 0)
             {
                 Console.WriteLine($"공격력 : {Attack}");
             }
@@ -108,12 +107,22 @@ namespace B02_TextRPG
             {
                 case 0:
                     return;
-                 
+
             }
         }
-        private void Die() 
-        { 
-            Console.WriteLine("Character is dead."); 
+        public void DamageHealth(int damage)
+        {
+            Health -= damage; 
+            if (Health <= 0) 
+            {
+                Die(); 
+            }
+        }
+
+
+        private void Die()
+        {
+            Console.WriteLine("Character is dead.");
         }
     }
 }

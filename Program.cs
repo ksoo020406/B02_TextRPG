@@ -5,13 +5,24 @@ using System.Collections.Generic;
 
 namespace B02_TextRPG
 {
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            GameManager gameManager = new GameManager();
+            Start.startScene();
+            BattleManager battleManager = new BattleManager();
+            
+        }
+    }
     public class GameManager
     {
         private Player player;
+        private BattleManager battleManager;
 
         public GameManager()
         {
-
+            battleManager = new BattleManager();
         }
 
 
@@ -88,14 +99,5 @@ namespace B02_TextRPG
 
     }
 
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            GameManager gameManager = new GameManager();
-            Start.startScene();
-            BattleManager battleManager = new BattleManager();
-            battleManager.StartBattle();
-        }
-    }
+    
 }
