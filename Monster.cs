@@ -22,9 +22,5 @@ namespace B02_TextRPG
         }
 
 
-
-        
-
-
     }
 }

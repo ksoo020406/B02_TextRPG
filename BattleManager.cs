@@ -1,4 +1,5 @@
-﻿using System;
+﻿using B02_TextRPG;
+using System;
 
 public class BattleManager
 {
@@ -9,4 +10,6 @@ public class BattleManager
     {
         // 전투 시작 로직
     }
+
+
 }
