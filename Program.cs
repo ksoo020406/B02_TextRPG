@@ -8,7 +8,7 @@ namespace B02_TextRPG
 
         public GameManager()
         {
-            StoreItems();
+
         }
 
 

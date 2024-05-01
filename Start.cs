@@ -40,6 +40,7 @@ namespace B02_TextRPG
 
             
             GameManager gameManager = new GameManager(); //게임매니저 인스턴스 생성      
+            gameManager.StoreItems();
             gameManager.MainMenu();  // 마을로 가기
             
         }
