@@ -18,7 +18,7 @@ namespace B02_TextRPG
             MonsterLevel = monsterLevel;
             MonsterName = monsterName;
             MonsterHealth = monsterHealth;
-            MonsterPower = monsterPower;
+            MonsterPower = monsterPower;    
         }
 
 
