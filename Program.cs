@@ -83,7 +83,7 @@ namespace B02_TextRPG
                         DunGeon.StartDunGeon(player);
                         break;
                     case 3:
-                        Inventory.ShowInventory();
+                        Inventory.ShowInventory(player);
                         break;
                     case 4:                        
                         Store_B02.ShowStore(player);
