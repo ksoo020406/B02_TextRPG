@@ -15,7 +15,7 @@ namespace B02_TextRPG
 
             Console.Clear(); 
             MonsterManager monsterManager = new MonsterManager();
-            List<Monster> monsters = monsterManager.GetMonsters();
+            List<Monster> monsters = GetRandomMonsters();
 
             Console.WriteLine("Battle!!");
             Console.WriteLine();
@@ -47,6 +47,21 @@ namespace B02_TextRPG
             }
         }
 
+        private List<Monster> GetRandomMonsters()
+        {
+            MonsterManager monsterManager = new MonsterManager();
+            List<Monster> allMonsters = monsterManager.GetMonsters();
+            List<Monster> randomMonsters = new List<Monster>();
+            List<Monster> selectedMonsters = new List<Monster>();
+            int numberOfMonsters = random.Next(1, 5);
 
+            for (int i = 0; i < numberOfMonsters; i++)
+            {
+                int randomIndex = random.Next(0, allMonsters.Count);
+                selectedMonsters.Add(allMonsters[randomIndex]);
+            }
+
+            return selectedMonsters;
+        }
     }
 }
