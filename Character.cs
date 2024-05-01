@@ -15,7 +15,9 @@ namespace B02_TextRPG
         public string Name { get; set; } //캐릭터 이름
         public string Job { get; set; } //캐릭터 직업
         public int Attack { get; set; } //캐릭터 공격력
+        public int AttackPlus { get; set; }
         public int Defense { get; set; } // 캐릭터 방어력
+        public int DefensePlus { get; set; }
         public int Gold { get; set; } // 캐릭터 소지 골드
         public int _health;
         public int Health 
@@ -40,6 +42,8 @@ namespace B02_TextRPG
             SetJobStats();
             Gold = 10000;
             Health = 100;
+            DefensePlus = 0;
+            AttackPlus = 0;
         }
         public void SetJobStats() //직업정보
         {
@@ -65,16 +69,31 @@ namespace B02_TextRPG
                     break;
             }
         }
-        public static void ShowInfo (int Level, string Name, string Job, int Attack, int Defense, int Health, int Gold)
+        public static void ShowInfo (int Level, string Name, string Job, int Attack, int Defense, int Health, int Gold,int AttackPlus,int DefensePlus)
         {
+           
             Console.Clear();
             Console.WriteLine("상태 보기");
             Console.WriteLine("캐릭터의 정보가 표시됩니다");
             Console.WriteLine();
             Console.WriteLine($"Lv. {Level:D2}");
             Console.WriteLine($"{Name} ( {Job} )");
-            Console.WriteLine($"공격력 : {Attack}");
-            Console.WriteLine($"방어력 : {Defense}");
+            if(AttackPlus > 0)
+            {
+                Console.WriteLine($"공격력 : {Attack} (+ {AttackPlus})");
+            }
+            else if(AttackPlus ==0)
+            {
+                Console.WriteLine($"공격력 : {Attack}");
+            }
+            if (DefensePlus > 0)
+            {
+                Console.WriteLine($"방어력 : {Defense} (+ {DefensePlus})");
+            }
+            else if (DefensePlus == 0)
+            {
+                Console.WriteLine($"방어력 : {Defense}");
+            }
             Console.WriteLine($"체력 : {Health}");
             Console.WriteLine($"Gold : {Gold} G");
 
