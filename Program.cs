@@ -93,7 +93,8 @@ namespace B02_TextRPG
         {
             GameManager gameManager = new GameManager();
             Start.startScene();
-          
+            BattleManager battleManager = new BattleManager();
+            battleManager.StartBattle();
         }
     }
 }
