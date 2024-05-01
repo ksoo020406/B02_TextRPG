@@ -25,6 +25,8 @@ namespace B02_TextRPG
 
         public static List<Item> storeItems = new List<Item>();  // 상점 아이템
 
+        public static List<Item> equippedItems = new List<Item> ();  // 장착 아이템 
+
         public Item(string name, string description, int attack, int defense, int gold)
         {
             Name = name;
@@ -45,6 +47,7 @@ namespace B02_TextRPG
         public  void AddInvenItem(Item inventoryItems)
         {
             InventoryItems.Add(inventoryItems);
+            equippedItems.Add(inventoryItems);
         }
 
     }
