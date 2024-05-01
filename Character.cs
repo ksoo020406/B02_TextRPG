@@ -19,21 +19,12 @@ namespace B02_TextRPG
         public int Defense { get; set; } // 캐릭터 방어력
         public int DefensePlus { get; set; }
         public int Gold { get; set; } // 캐릭터 소지 골드
-        public int _health;
+        public int Health { get; set; }//캐릭터 체력
 
         public int Potion { get; set; }
-        public int Health 
-        {
-            get
-            {
-                return _health;
-            }
-            set
-            {
-                _health = value; if (_health <= 0) { Die(); }
-            }
+       
         
-        } //캐릭터 체력
+        
 
         public Player(string name, string job)
         {
