@@ -12,36 +12,44 @@ namespace B02_TextRPG
     {
         public static void quest()
         {
-            Console.Clear();
-          
-            Console.WriteLine(">>> 퀘스트 발생! <<<");
-            Console.WriteLine();
-            Console.WriteLine("1. 과제발생기 강탈 미션 ★");                      // 기본 공격으로 매니저님들의 컴퓨터를 부수면 되는 게임
-            Console.WriteLine("2. 거대한 혁최몬 소탕 미션 ★ ★ ★");               // 혁최몬 체력이 좀 더 많아집니다
-            Console.WriteLine("3. 스파르타 코딩클럽에서 생존하기 ★ ★ ★ ★ ★");    // 일단 넣어봄
-            Console.WriteLine("0. 마을로 돌아가기");
 
-            Console.WriteLine();
-            Console.WriteLine("참여하실 퀘스트 번호를 입력해주세요");
-            Console.Write(">>");
+            bool exit = false;
 
-
-            int choice = ConsoleUtility.PromptMenuChoice(0, 3);
-
-            switch (choice)
+            while (!exit)
             {
-                case 0:
-                    return;
+                Console.Clear();
 
-                case 1:
-                    quest1();
-                    break;
-                case 2:
-                    quest2();   
-                    break;
-                case 3:
-                    quest3();
-                    break;
+                Console.WriteLine(">>> 퀘스트 발생! <<<");
+                Console.WriteLine();
+                Console.WriteLine("1. 과제발생기 강탈 미션 ★");                      // 기본 공격으로 매니저님들의 컴퓨터를 부수면 되는 게임
+                Console.WriteLine("2. 거대한 혁최몬 소탕 미션 ★ ★ ★");               // 혁최몬 체력이 좀 더 많아집니다
+                Console.WriteLine("3. 스파르타 코딩클럽에서 생존하기 ★ ★ ★ ★ ★");    // 일단 넣어봄
+                Console.WriteLine("0. 마을로 돌아가기");
+
+                Console.WriteLine();
+                Console.WriteLine("참여하실 퀘스트 번호를 입력해주세요");
+                Console.Write(">>");
+
+
+                int choice = ConsoleUtility.PromptMenuChoice(0, 3);
+
+                switch (choice)
+                {
+                    case 0:
+                        exit = true;
+                        break;
+
+                    case 1:
+                        quest1();
+                        break;
+                    case 2:
+                        quest2();
+                        break;
+                    case 3:
+                        quest3();
+                        break;
+                }
+
             }
         }
 

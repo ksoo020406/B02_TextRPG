@@ -73,13 +73,14 @@ namespace B02_TextRPG
                 Console.WriteLine("2. 전투하기");
                 Console.WriteLine("3. 인벤토리");
                 Console.WriteLine("4. 상점");
+                Console.WriteLine("5. 퀘스트");
                 Console.WriteLine("");
                 Console.WriteLine("0. 종료");
                 Console.WriteLine("");
 
 
                 // 2. 선택한 결과를 검증한다.
-                int choice = ConsoleUtility.PromptMenuChoice(0, 4);
+                int choice = ConsoleUtility.PromptMenuChoice(0, 5);
                 // 3. 선택한 결과에 따라 보내준다.
                 switch (choice)
                 {
@@ -97,6 +98,9 @@ namespace B02_TextRPG
                         break;
                     case 4:
                         Store_B02.ShowStore(player);
+                        break;
+                    case 5:
+                        Quest.quest();
                         break;
                 }
 
