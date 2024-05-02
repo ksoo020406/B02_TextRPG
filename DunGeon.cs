@@ -26,7 +26,9 @@ namespace B02_TextRPG
             Console.WriteLine("1. 상태보기");
             Console.WriteLine("2. 전투시작");
             Console.WriteLine("3. 회복 아이템");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("0. 나가기");
+            Console.ResetColor();
             Console.WriteLine();
 
             int input = ConsoleUtility.PromptMenuChoice(0,3);
