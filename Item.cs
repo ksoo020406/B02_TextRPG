@@ -78,6 +78,33 @@ namespace B02_TextRPG
 
         }
 
+        internal void PrintItemStatChange1(bool anOptionNumber = false, int idx = 0)
+        {
+
+            if (anOptionNumber && !Equipped) // 장착 전 표시
+            {
+                Console.Write($"{idx}. ");
+            }
+            else Console.Write("   "); //장착 후 표시1
+
+            if (Equipped) // 장착 후 표시2
+            {
+                Console.Write("[E]");
+
+                Console.Write(ConsoleUtility.SpacingLetters(Name, 16));
+            }
+            else Console.Write(ConsoleUtility.SpacingLetters(Name, 19));//[E]+16
+
+            string Statistics = AttackPower > 0 ? $"공격력: {AttackPower}" :
+                                DefensePower > 0 ? $"방어력: {DefensePower}" : "";
+
+            Console.Write(" | ");
+            Console.Write(ConsoleUtility.SpacingLetters(Statistics, 12));
+            Console.Write(" | ");
+            Console.Write(ConsoleUtility.SpacingLetters(Description, 50));
+
+        }
+
         //장착관리용 메소드
         internal void ToggleEquip()
         {
