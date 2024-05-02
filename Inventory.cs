@@ -92,6 +92,7 @@ namespace B02_TextRPG
                             {
                                 player.Health = 100;
                             }
+                            selectedItem.Equipped = false;
                             selectedItem.Purchase = false;
                             Item.InventoryItems.Remove(selectedItem);
                         }      

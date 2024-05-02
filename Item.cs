@@ -67,7 +67,7 @@ namespace B02_TextRPG
         internal void PrintItemStatChange(bool anOptionNumber = false, int idx = 0)
         {
             
-            if (anOptionNumber && Equipped) // 장착 전 표시
+            if (anOptionNumber && !Equipped) // 장착 전 표시
             {
                 Console.Write($"{idx}. ");
             }
