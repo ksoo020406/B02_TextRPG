@@ -42,9 +42,7 @@ namespace B02_TextRPG
             Console.WriteLine("0. 나가기");
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine("\n원하시는 행동을 입력해주세요.");
-            Console.Write(">> ");
-            int input = int.Parse(Console.ReadLine());
+            int input = ConsoleUtility.PromptMenuChoice(0,2);
 
             if (input == 1)
             {
@@ -66,64 +64,73 @@ namespace B02_TextRPG
 
         public static void PurchasedMogi(Player player)
         {
-            Console.Clear();
-
-            Console.WriteLine("**상점**");
-            Console.WriteLine("필요한 아이템을 얻을 수 있는 상점입니다.");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("[보유 골드]");
-            Console.WriteLine($"{player.Gold} G");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("[아이템 목록]");
-            for (int i = 0; i < Item.storeItems.Count; i++)
+            bool exit = false;
+            while(!exit)
             {
-                string status = Item.storeItems[i].Purchase ? "구매완료" : $"{Item.storeItems[i].Gold} G";
-                string Statistics = Item.storeItems[i].AttackPower > 0 ? $"공격력: {Item.storeItems[i].AttackPower}" :
-                      Item.storeItems[i].DefensePower > 0 ? $"방어력: {Item.storeItems[i].DefensePower}" : "";
-                Console.WriteLine($"- {i + 1}. {Item.storeItems[i].Name} | {Statistics} | {Item.storeItems[i].Description} | {status}");
-            }
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("구매할 아이템의 번호를 누르세요.");
-            Console.Write(">> ");
-            Console.WriteLine();
-            Console.WriteLine();
-            int input = int.Parse(Console.ReadLine());
+                Console.Clear();
 
-            // input 값 확인하기 
-            if (Item.storeItems.Count >= input && 1 <= input)
-            {
-                Item selectedItem = Item.storeItems[input - 1];
-                if (selectedItem.Purchase)
+                Console.WriteLine("**상점**");
+                Console.WriteLine("필요한 아이템을 얻을 수 있는 상점입니다.");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("[보유 골드]");
+                Console.WriteLine($"{player.Gold} G");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("[아이템 목록]");
+                for (int i = 0; i < Item.storeItems.Count; i++)
                 {
-                    // 아이템 구매
-                    Console.WriteLine("이미 구매한 아이템 입니다!");
-                
+                    string status = Item.storeItems[i].Purchase ? "구매완료" : $"{Item.storeItems[i].Gold} G";
+                    string Statistics = Item.storeItems[i].AttackPower > 0 ? $"공격력: {Item.storeItems[i].AttackPower}" :
+                          Item.storeItems[i].DefensePower > 0 ? $"방어력: {Item.storeItems[i].DefensePower}" : "";
+                    Console.WriteLine($"- {i + 1}. {Item.storeItems[i].Name} | {Statistics} | {Item.storeItems[i].Description} | {status}");
                 }
-                else if (player.Gold >= selectedItem.Gold)
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("0. 나가기");
+                int input = ConsoleUtility.PromptMenuChoice(0, Item.storeItems.Count);
+
+                switch (input)
                 {
-                    // 재화 감소
-                    player.Gold -= selectedItem.Gold;
-                    // 능력치 증가
-                    //player.AttackPlus += selectedItem.AttackPower;
-                    //player.DefensePlus += selectedItem.DefensePower;
-                    // 구매 
-                    selectedItem.Purchase = true;
-                    // 구매한 아이템 리스트에 추가 
-                    Item.InventoryItems.Add(selectedItem);
-                    Console.WriteLine("구매를 완료했습니다!");
-                    ShowStore(player);
+                    case 0: exit = true; break;
+                    default:
+                    
+                        if (Item.storeItems.Count >= input && 1 <= input)
+                        {
+                            Item selectedItem = Item.storeItems[input - 1];
+                            if (selectedItem.Purchase)
+                            {
+                                // 아이템 구매
+                                Console.WriteLine("이미 구매한 아이템 입니다!");
+                                Console.WriteLine("아무키나 누르세요...");
+                                Console.ReadKey();
+
+                            }
+                            else if (player.Gold >= selectedItem.Gold)
+                            {
+                                // 재화 감소
+                                player.Gold -= selectedItem.Gold;
+                                // 구매 
+                                selectedItem.Purchase = true;
+                                // 구매한 아이템 리스트에 추가 
+                                Item.InventoryItems.Add(selectedItem);
+                                Console.WriteLine("구매를 완료했습니다!");
+                                PurchasedMogi(player);
+                            }
+                            else if (player.Gold < selectedItem.Gold)
+                            {
+                                Console.WriteLine("골드가 부족합니다..");
+                            }
+                            else
+                            {
+                                Console.WriteLine("잘못된 입력입니다.");
+                            }
+                          
+                        }
+                        break;
                 }
-                else if (player.Gold < selectedItem.Gold)
-                {
-                    Console.WriteLine("골드가 부족합니다..");
-                }
-                else
-                {
-                    Console.WriteLine("잘못된 입력입니다.");
-                }
+        
+            
             }
         }
 
@@ -153,9 +160,8 @@ namespace B02_TextRPG
                 }
             }
             Console.WriteLine();
-            Console.WriteLine("판매할 아이템의 번호를 눌러주세요.");
-            Console.Write(">>");
-            int input = int.Parse(Console.ReadLine());
+            Console.WriteLine("0. 나가기");
+            int input = ConsoleUtility.PromptMenuChoice(0, Item.InventoryItems.Count);
 
 
             switch (input)
