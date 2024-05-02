@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace B02_TextRPG
 {
-    internal class Quest
+    internal class Quest  //테스트
     {
         public static void quest()
         {
