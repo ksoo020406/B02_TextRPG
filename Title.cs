@@ -13,7 +13,7 @@ namespace B02_TextRPG
         {
             Console.WriteLine("");
             Console.Write("        ::"); Console.Write("::::::                                                ::::: ");                Console.WriteLine("(`-')      (`-').-> (`-')  _ ");
-            Console.Write("        ::"); Console.Write(":::::                        __o__ \\o/       \\o   ::::::: ");               Console.WriteLine("( OO).->   (OO )__  ( OO).-/ ");
+            Console.Write("        ::"); Console.Write(":::::                        __o__ \\o/       \\o     ::::::: ");              Console.WriteLine("( OO).->   (OO )__  ( OO).-/ ");
             Console.Write("        ::"); Console.Write("::::      _____   ___   ___    |    |    o    |>  ::::::::: ");                Console.WriteLine("/    '._  ,--. ,'-'(,------. ");
             Console.Write("        ::"); Console.Write(":::      /\\    \\ |\\  \\ |\\  \\  / \\  < > __|>_ // ::::::::::: ");         Console.WriteLine("|'--...__)|  | |  | |  .---' ");
             Console.Write("        ::"); Console.Write("::      /::\\    \\\\ \\  \\\\_\\  \\                 ::::::::::::: ");        Console.WriteLine("`--.  .--'|  `-'  |(|  '--.  ");
