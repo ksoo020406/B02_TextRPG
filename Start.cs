@@ -16,6 +16,14 @@ namespace B02_TextRPG
             Console.Clear(); //화면정리
 
             //게임입장 시 멘트
+            Console.WriteLine("   _____                         _____ _             _   ");
+            Console.WriteLine("  / ____|                       / ____| |           | |  ");
+            Console.WriteLine(" | |  __  __ _ _ __ ___   ___  | (___ | |_ __ _ _ __| |_ ");
+            Console.WriteLine(" | | |_ |/ _` | '_ ` _ \\ / _ \\  \\___ \\| __/ _` | '__| __|");
+            Console.WriteLine(" | |__| | (_| | | | | | |  __/  ____) | || (_| | |  | |_ ");
+            Console.WriteLine("  \\_____|\\__,_|_| |_| |_|\\___| |_____/ \\__\\__,_|_|   \\__|");
+            Console.WriteLine();
+
             Console.WriteLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
             Console.WriteLine("스파르타 던전에 오신 여러분 환영합니다.");
             Console.WriteLine("캐릭터를 생성하려면 이름을 입력하세요");

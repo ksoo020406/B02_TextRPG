@@ -19,7 +19,13 @@ namespace B02_TextRPG
             {
                 Console.Clear();
 
-                Console.WriteLine(">>> 퀘스트 발생! <<<");
+                Console.WriteLine("   ____                  _     _ ");
+                Console.WriteLine("  / __ \\                | |   | |");
+                Console.WriteLine(" | |  | |_   _  ___  ___| |_  | |");
+                Console.WriteLine(" | |  | | | | |/ _ \\/ __| __| | |");
+                Console.WriteLine(" | |__| | |_| |  __/\\__ \\ |_  |_|");
+                Console.WriteLine("  \\___\\_\\\\__,_|\\___||___/\\__| (_)");
+                Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("1. 과제발생기 강탈 미션 ★");                      // 기본 공격으로 매니저님들의 컴퓨터를 부수면 되는 게임
                 Console.WriteLine("2. 거대한 혁최몬 소탕 미션 ★ ★ ★");               // 혁최몬 체력이 좀 더 많아집니다
