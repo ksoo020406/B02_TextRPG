@@ -183,8 +183,8 @@ namespace B02_TextRPG
                         player.Gold += (int)(selectedItem.Gold * 0.85);
                         Item.InventoryItems.Remove(selectedItem);
                         // 다시 원상태로
-                        //player.AttackPlus -= selectedItem.AttackPower;
-                        //player.DefensePlus -= selectedItem.DefensePower;
+                        player.AttackPlus -= selectedItem.AttackPower;
+                        player.DefensePlus -= selectedItem.DefensePower;
 
                     }
                     else
