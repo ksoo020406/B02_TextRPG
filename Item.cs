@@ -16,7 +16,7 @@ namespace B02_TextRPG
         public int Gold { get; } // 가격
 
         public bool Purchase { get; set; }
-        public bool Equipped { get; private set; }
+        public bool Equipped { get; set; }
         //public Item()
         //{
 
@@ -67,7 +67,7 @@ namespace B02_TextRPG
         internal void PrintItemStatChange(bool anOptionNumber = false, int idx = 0)
         {
             
-            if (anOptionNumber && !Equipped) // 장착 전 표시
+            if (anOptionNumber && Equipped) // 장착 전 표시
             {
                 Console.Write($"{idx}. ");
             }

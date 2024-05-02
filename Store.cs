@@ -186,7 +186,7 @@ namespace B02_TextRPG
                         if (Item.InventoryItems.Contains(selectedItem))
                         {
                             selectedItem.Purchase = false;
-                            selectedItem.ToggleEquip();
+                            selectedItem.Equipped = false;
                             Item.InventoryItems.Remove(selectedItem);
                             // 다시 원상태로
                             player.AttackPlus -= selectedItem.AttackPower;
