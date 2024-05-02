@@ -83,6 +83,18 @@ namespace B02_TextRPG
                     {
                         player.AttackPlus += selectedItem.AttackPower;
                         player.DefensePlus += selectedItem.DefensePower;
+                        // 선택한 아이템이 힐템이면
+                        if (selectedItem.HealingPower > 0)
+                        {
+                            player.Health += selectedItem.HealingPower;
+
+                            if (player.Health > 100)
+                            {
+                                player.Health = 100;
+                            }
+                            selectedItem.Purchase = false;
+                            Item.InventoryItems.Remove(selectedItem);
+                        }      
                     }
                     // 아니면 능력치 빼기
                     else
