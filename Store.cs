@@ -36,7 +36,7 @@ namespace B02_TextRPG
                 //      Item.InventoryItems[i].DefensePower > 0 ? $"방어력: {Item.InventoryItems[i].DefensePower}" : "";
                 //Console.WriteLine($"- {Item.InventoryItems[i].Name} | {Statistics} | {Item.InventoryItems[i].Description} | {status}");
 
-                Item.InventoryItems[i].PrintItemStatChange();
+                Console.Write($" - {i + 1}"); Item.InventoryItems[i].PrintItemStatChange();
             }
             Console.WriteLine();
             Console.WriteLine("1. 아이템 구매");
@@ -81,14 +81,10 @@ namespace B02_TextRPG
                 for (int i = 0; i < Item.storeItems.Count; i++)
                 {
                     string status = Item.storeItems[i].Purchase ? "구매완료" : $"{Item.storeItems[i].Gold} G";
-                    //string Statistics = Item.storeItems[i].AttackPower > 0 ? $"공격력: {Item.storeItems[i].AttackPower}" :
-                    //      Item.storeItems[i].DefensePower > 0 ? $"방어력: {Item.storeItems[i].DefensePower}" : "";
-                    //Console.WriteLine($"- {i + 1}. {Item.storeItems[i].Name} | {Statistics} | {Item.storeItems[i].Description} | {status}");
-
-                    Console.Write($" - {i + 1}"); Item.storeItems[i].PrintItemStatChange1();
-                    Console.Write(" | ");
-                    Console.WriteLine(ConsoleUtility.SpacingLetters(status, 5));
-                }
+                    string Statistics = Item.storeItems[i].AttackPower > 0 ? $"공격력: {Item.storeItems[i].AttackPower}" :
+                          Item.storeItems[i].DefensePower > 0 ? $"방어력: {Item.storeItems[i].DefensePower}" : "";
+                    Console.WriteLine($"- {i + 1}. {Item.storeItems[i].Name} | {Statistics} | {Item.storeItems[i].Description} | {status}");
+            }
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -159,19 +155,20 @@ namespace B02_TextRPG
             Console.WriteLine();
             Console.WriteLine("[아이템 목록]");
             Console.WriteLine();
+            int index = 1;
             //보유한 아이템 목록 띄우기
             for (int i = 0; i < Item.InventoryItems.Count; i++)
             {
-                //if (Item.InventoryItems[i].Purchase)
-                //{
-                //    string equipped = Item.equippedItems.Contains(Item.InventoryItems[i]) ? "[E]" : "";
-                //    string Statistics = Item.InventoryItems[i].AttackPower > 0 ? $"공격력: {Item.InventoryItems[i].AttackPower}" :
-                //      Item.InventoryItems[i].DefensePower > 0 ? $"방어력: {Item.InventoryItems[i].DefensePower}" : "";
-                //    Console.WriteLine($"{index}. {equipped} {Item.InventoryItems[i].Name} | {Statistics} | {Item.InventoryItems[i].Description}");
-                //    index++;
-                //}
+                if (Item.InventoryItems[i].Purchase)
+                {
+                    string equipped = Item.equippedItems.Contains(Item.InventoryItems[i]) ? "[E]" : "";
+                    string Statistics = Item.InventoryItems[i].AttackPower > 0 ? $"공격력: {Item.InventoryItems[i].AttackPower}" :
+                      Item.InventoryItems[i].DefensePower > 0 ? $"방어력: {Item.InventoryItems[i].DefensePower}" : "";
+                    Console.WriteLine($"{index}. {equipped} {Item.InventoryItems[i].Name} | {Statistics} | {Item.InventoryItems[i].Description}");
+                    index++;
+                }
 
-                Console.Write($" - {i + 1}"); Item.InventoryItems[i].PrintItemStatChange();
+
             }
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Red;
@@ -206,8 +203,6 @@ namespace B02_TextRPG
                         player.DefensePlus -= selectedItem.DefensePower;
                         Thread.Sleep(800);
                         Resale(player);
-
-
 
                     }
                     else
