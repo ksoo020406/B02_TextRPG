@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography.X509Certificates;
 using System.Collections.Generic;
+using System.Numerics;
 
 
 
@@ -10,9 +11,8 @@ namespace B02_TextRPG
         public static void Main(string[] args)
         {
             GameManager gameManager = new GameManager();
-            Start.startScene();
+            gameManager.GameIntro();
             BattleManager battleManager = new BattleManager();
-            
         }
     }
     public class GameManager
@@ -47,6 +47,13 @@ namespace B02_TextRPG
             Item.storeItems.Add(sujin);
         }
 
+        public void GameIntro()
+        {
+            Console.Clear();
+            Title.TitleText();
+            Start.startScene();
+        }
+
         public void MainMenu(Player player)
         {
             while (true)
@@ -67,25 +74,28 @@ namespace B02_TextRPG
                 Console.WriteLine("3. 인벤토리");
                 Console.WriteLine("4. 상점");
                 Console.WriteLine("");
-                Console.WriteLine();
+                Console.WriteLine("0. 종료");
+                Console.WriteLine("");
 
 
                 // 2. 선택한 결과를 검증한다.
-                int choice = ConsoleUtility.PromptMenuChoice(1, 4);
+                int choice = ConsoleUtility.PromptMenuChoice(0, 4);
                 // 3. 선택한 결과에 따라 보내준다.
                 switch (choice)
                 {
+                    case 0:
+                        Environment.Exit(0);
+                        break;
                     case 1:
                         Player.ShowInfo(player.Level, player.Name, player.Job, player.Attack, player.Defense, player.Health, player.Gold, player.AttackPlus, player.DefensePlus);
                         break;
-
                     case 2:
                         DunGeon.StartDunGeon(player);
                         break;
                     case 3:
                         Inventory.ShowInventory(player);
                         break;
-                    case 4:                        
+                    case 4:
                         Store_B02.ShowStore(player);
                         break;
                 }
@@ -99,5 +109,5 @@ namespace B02_TextRPG
 
     }
 
-    
+
 }
