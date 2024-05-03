@@ -75,7 +75,7 @@ namespace B02_TextRPG
             {
                 Console.WriteLine($"공격력 : {Attack} (+ {AttackPlus})");
             }
-            else if (AttackPlus == 0)
+            else if (AttackPlus <= 0)
             {
                 Console.WriteLine($"공격력 : {Attack}");
             }
@@ -83,7 +83,7 @@ namespace B02_TextRPG
             {
                 Console.WriteLine($"방어력 : {Defense} (+ {DefensePlus})");
             }
-            else if (DefensePlus == 0)
+            else if (DefensePlus <= 0)
             {
                 Console.WriteLine($"방어력 : {Defense}");
             }

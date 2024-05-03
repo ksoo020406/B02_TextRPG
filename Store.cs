@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace B02_TextRPG
 {
@@ -31,17 +32,14 @@ namespace B02_TextRPG
             Console.WriteLine();
             for (int i = 0; i < Item.InventoryItems.Count; i++) // 리스트에는 항상 Count(몇 개?)라는 값이 있다.
             {
-                //string status = Item.InventoryItems[i].Purchase ? "구매완료" : $"{Item.InventoryItems[i].Gold} G";
-                //string Statistics = Item.InventoryItems[i].AttackPower > 0 ? $"공격력: {Item.InventoryItems[i].AttackPower}" :
-                //      Item.InventoryItems[i].DefensePower > 0 ? $"방어력: {Item.InventoryItems[i].DefensePower}" : "";
-                //Console.WriteLine($"- {Item.InventoryItems[i].Name} | {Statistics} | {Item.InventoryItems[i].Description} | {status}");
-
                 Console.Write($" - {i + 1}"); Item.InventoryItems[i].PrintItemStatChange();
             }
             Console.WriteLine();
             Console.WriteLine("1. 아이템 구매");
             Console.WriteLine("2. 아이템 판매");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("0. 나가기");
+            Console.ResetColor();
             Console.WriteLine();
             Console.WriteLine();
             int input = ConsoleUtility.PromptMenuChoice(0,2);
@@ -80,11 +78,8 @@ namespace B02_TextRPG
                 Console.WriteLine("[아이템 목록]");
                 for (int i = 0; i < Item.storeItems.Count; i++)
                 {
-                    string status = Item.storeItems[i].Purchase ? "구매완료" : $"{Item.storeItems[i].Gold} G";
-                    string Statistics = Item.storeItems[i].AttackPower > 0 ? $"공격력: {Item.storeItems[i].AttackPower}" :
-                          Item.storeItems[i].DefensePower > 0 ? $"방어력: {Item.storeItems[i].DefensePower}" : "";
-                    Console.WriteLine($"- {i + 1}. {Item.storeItems[i].Name} | {Statistics} | {Item.storeItems[i].Description} | {status}");
-            }
+                     Console.Write($" - {i + 1} "); Item.storeItems[i].PrintItemStatChange1();
+                 }
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -155,17 +150,12 @@ namespace B02_TextRPG
             Console.WriteLine();
             Console.WriteLine("[아이템 목록]");
             Console.WriteLine();
-            int index = 1;
             //보유한 아이템 목록 띄우기
             for (int i = 0; i < Item.InventoryItems.Count; i++)
             {
                 if (Item.InventoryItems[i].Purchase)
                 {
-                    string equipped = Item.equippedItems.Contains(Item.InventoryItems[i]) ? "[E]" : "";
-                    string Statistics = Item.InventoryItems[i].AttackPower > 0 ? $"공격력: {Item.InventoryItems[i].AttackPower}" :
-                      Item.InventoryItems[i].DefensePower > 0 ? $"방어력: {Item.InventoryItems[i].DefensePower}" : "";
-                    Console.WriteLine($"{index}. {equipped} {Item.InventoryItems[i].Name} | {Statistics} | {Item.InventoryItems[i].Description}");
-                    index++;
+                    Console.Write($" - {i + 1}"); Item.InventoryItems[i].PrintItemStatChange();
                 }
 
 
@@ -188,19 +178,24 @@ namespace B02_TextRPG
                     {
                         Console.WriteLine();
                         Console.WriteLine();
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine($"'{selectedItem.Name}'을(를) {selectedItem.Gold * 0.85} G에 판매하였습니다.");
-                        // 장착중이면 해제
+                        Console.ResetColor();
+
+                        // 장착중이면 해제하고 리스트에서 삭제
                         if (Item.InventoryItems.Contains(selectedItem))
                         {
                             selectedItem.Purchase = false;
+                            selectedItem.Equipped = false;
                             Item.InventoryItems.Remove(selectedItem);
+                            // 다시 원상태로
+                            player.AttackPlus -= selectedItem.AttackPower;
+                            player.DefensePlus -= selectedItem.DefensePower;
                         }
                         // 아이템 판매 및 골드 추가
                         player.Gold += (int)(selectedItem.Gold * 0.85);
+                        selectedItem.Purchase = false;
                         Item.InventoryItems.Remove(selectedItem);
-                        // 다시 원상태로
-                        player.AttackPlus -= selectedItem.AttackPower;
-                        player.DefensePlus -= selectedItem.DefensePower;
                         Thread.Sleep(800);
                         Resale(player);
 
