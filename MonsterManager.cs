@@ -29,19 +29,16 @@ namespace B02_TextRPG
             return monsters;
         }
 
-        public List<Monster> GetRandomMonsters()
+        public void DisplayRandomMonsters()
         {
-            List<Monster> randomMonsters = new List<Monster>();
-
             int numMonsters = random.Next(1, 5);
 
             for (int i = 0; i < numMonsters; i++)
             {
                 int randomIndex = random.Next(0, monsters.Count);
-                randomMonsters.Add(monsters[randomIndex]);
+                Monster monster = monsters[randomIndex];
+                Console.WriteLine($"Battle!!\n\nLv.{monster.Level} {monster.Name}  HP {monster.Health}");
             }
-
-            return randomMonsters;
         }
     }
 }

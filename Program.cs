@@ -73,7 +73,7 @@ namespace B02_TextRPG
                 Console.WriteLine("");
 
                 Console.WriteLine("1. 상태보기");
-                Console.WriteLine("2. 전투하기");
+                Console.WriteLine("2. 던전가기");
                 Console.WriteLine("3. 인벤토리");
                 Console.WriteLine("4. 상점");
                 Console.WriteLine("5. 퀘스트");
