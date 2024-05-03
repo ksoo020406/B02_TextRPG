@@ -20,7 +20,7 @@ namespace B02_TextRPG
         public void StartBattle(Player player)
         {
          
-
+            Console.Clear();
             Console.WriteLine("Battle!!");
             Console.WriteLine("");
             monsterManager.DisplayRandomMonsters();
@@ -29,7 +29,7 @@ namespace B02_TextRPG
             Console.WriteLine("[내 정보]");
             Console.WriteLine($"LV.{player.Level},{player.Name}({player.Job})");
             Console.WriteLine($"HP{player.Health}/{player.MaxHealth}");
-
+            int input = ConsoleUtility.PromptMenuChoice(0, 3);
 
         }
        
