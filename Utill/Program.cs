@@ -103,7 +103,7 @@ namespace B02_TextRPG
                         Store_B02.ShowStore(player);
                         break;
                     case 5:
-                        QuestManager.Quest();
+                        QuestManager.Quest(player);
                         break;
                 }
 

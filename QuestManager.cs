@@ -10,7 +10,7 @@ namespace B02_TextRPG
 {
     internal class QuestManager  
     {
-        public static void Quest()
+        public static void Quest (Player player)
         {
 
             bool exit = false;
@@ -46,20 +46,20 @@ namespace B02_TextRPG
                         break;
 
                     case 1:
-                        Quest1();
+                        Quest1(player);
                         break;
                     case 2:
-                        Quest2();
+                        Quest2(player);
                         break;
                     case 3:
-                        Quest3();
+                        Quest3(player);
                         break;
                 }
 
             }
         }
 
-        public static void Quest1()
+        public static void Quest1(Player player)
         {
             Console.Clear();
 
@@ -86,13 +86,13 @@ namespace B02_TextRPG
                     return;
 
                 case 1:
-                    StartQuest.StartQuest1();
+                    StartQuest.StartQuest1(player);
                     break;
 
             }
         }
 
-        public static void Quest2()
+        public static void Quest2(Player player)
         {
             Console.Clear();
 
@@ -124,7 +124,7 @@ namespace B02_TextRPG
             }
         }
 
-        public static void Quest3()
+        public static void Quest3(Player player)
         {
             Console.Clear();
 
