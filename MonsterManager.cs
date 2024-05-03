@@ -37,7 +37,7 @@ namespace B02_TextRPG
             {
                 int randomIndex = random.Next(0, monsters.Count);
                 Monster monster = monsters[randomIndex];
-                Console.WriteLine($"Battle!!\n\nLv.{monster.Level} {monster.Name}  HP {monster.Health}");
+                Console.WriteLine($"Lv.{monster.Level} {monster.Name}  HP {monster.Health}");
             }
         }
     }
