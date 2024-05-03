@@ -15,16 +15,20 @@ namespace B02_TextRPG
         {
             
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"); // 60개 
             Console.WriteLine("스파르타 마을에 오신 여러분 환영합니다.");
             Console.WriteLine("이제 전투를 시작할 수 있습니다.");
             Console.WriteLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"); // 60개 
             Console.WriteLine("");
+            Console.ResetColor();
 
             Console.WriteLine("1. 상태보기");
             Console.WriteLine("2. 전투시작");
             Console.WriteLine("3. 회복 아이템");
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("0. 나가기");
+            Console.ResetColor();
             Console.WriteLine();
 
             int input = ConsoleUtility.PromptMenuChoice(0,3);
@@ -45,15 +49,19 @@ namespace B02_TextRPG
 
         public static void potionUse(Player player)
         {
-            Console.Clear();
-            Console.WriteLine("**회복**");
-            // 플레이어가 가지고 있는 포션 개수로 표시 
-            Console.WriteLine($"포션을 사용하면 체력을 30 회복 할 수 있습니다. (남은 포션 : {player.Potion})");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("1. 사용하기");
-            Console.WriteLine("0. 나가기");
-            int input = ConsoleUtility.PromptMenuChoice(0, 1);
+                Console.Clear();
+
+                Console.WriteLine("**회복**");
+                // 플레이어가 가지고 있는 포션 개수로 표시 
+                Console.WriteLine($"포션을 사용하면 체력을 30 회복 할 수 있습니다. (남은 포션 : {player.Potion})");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("1. 사용하기");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("0. 나가기");
+                Console.ResetColor();
+                Console.WriteLine();
+                int input = ConsoleUtility.PromptMenuChoice(0, 1);
 
             switch (input)
             {
@@ -71,26 +79,22 @@ namespace B02_TextRPG
 
                         // 포션 갯수 감소
                         player.Potion--;
-                        Console.WriteLine("아무 키나 입력하세요..");
-                        Console.ReadKey();
                     }
                     // 포션이 없을때
                     else if (player.Potion <= 0)
                     {
-                        Console.WriteLine("포션이 부족합니다!");
-                        Console.WriteLine("아무 키나 입력하세요..");
-                        Console.ReadKey();
+                        Console.WriteLine("포션이 부족합니다! 포션을 구해오세요!");
                     }
                     else
                     {
                         Console.WriteLine("이미 최대 체력입니다!");
-                        Console.WriteLine("아무 키나 입력하세요..");
-                        Console.ReadKey();
                     }
+                    Thread.Sleep(500);
+                    StartDunGeon(player);
                     break;
-                case 0: return;
-            }
+                case 0: StartDunGeon(player); break;
 
+            }
         }
     }
 }

@@ -12,10 +12,11 @@ namespace B02_TextRPG
         public string Description { get; set; }  // 아이템 설명 
         public int AttackPower { get; set; }  // 공격력 
         public int DefensePower { get; set; }   // 방어력 
+        public int HealingPower { get; set; } // 힐링 
         public int Gold { get; } // 가격
 
         public bool Purchase { get; set; }
-        public bool Equipped { get; private set; }
+        public bool Equipped { get; set; }
         //public Item()
         //{
 
@@ -27,12 +28,24 @@ namespace B02_TextRPG
 
         public static List<Item> equippedItems = new List<Item>();  // 장착 아이템 
 
+        // 능력치 아이템
         public Item(string name, string description, int attack, int defense, int gold, bool equipped = false)
         {
             Name = name;
             Description = description;
             AttackPower = attack;
             DefensePower = defense;
+            Gold = gold;
+            Purchase = false;
+            Equipped = equipped;
+        }
+
+        // 힐 아이템
+        public Item(string name, string description,int heal, int gold, bool equipped = false)
+        {
+            Name = name;
+            Description = description;
+            HealingPower = heal;
             Gold = gold;
             Purchase = false;
             Equipped = equipped;
@@ -69,12 +82,33 @@ namespace B02_TextRPG
             else Console.Write(ConsoleUtility.SpacingLetters(Name, 19));//[E]+16
 
             string Statistics = AttackPower > 0 ? $"공격력: {AttackPower}" :
-                                DefensePower > 0 ? $"방어력: {DefensePower}" : "";
+                                DefensePower > 0 ? $"방어력: {DefensePower}" :
+                                HealingPower > 0 ? $"체력: {HealingPower}" : "";
 
             Console.Write(" | ");
             Console.Write(ConsoleUtility.SpacingLetters(Statistics, 12));
             Console.Write(" | ");
             Console.WriteLine(ConsoleUtility.SpacingLetters(Description, 50));
+
+        }
+
+        internal void PrintItemStatChange1(bool anOptionNumber = false, int idx = 0)
+        {
+
+            Console.Write(ConsoleUtility.SpacingLetters(Name, 19));
+     
+
+            string Statistics = AttackPower > 0 ? $"공격력: {AttackPower}" :
+                                DefensePower > 0 ? $"방어력: {DefensePower}" : 
+                                HealingPower >0 ? $"체력: {HealingPower}" : "";
+
+            Console.Write(" | ");
+            Console.Write(ConsoleUtility.SpacingLetters(Statistics, 12));
+            Console.Write(" | ");
+            Console.Write(ConsoleUtility.SpacingLetters(Description, 50));
+            Console.Write(" | ");
+            string status = Purchase ? "구매완료" : $"{Gold} G";
+            Console.WriteLine(ConsoleUtility.SpacingLetters(status,5));
 
         }
 
