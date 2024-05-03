@@ -32,8 +32,8 @@ namespace B02_TextRPG
             Console.WriteLine();
 
             int input = ConsoleUtility.PromptMenuChoice(0, 3);
-
-            BattleManager battleManager = new BattleManager();
+            BattleManager battlemanager;
+            
             switch (input)
             {
                 case 1:
@@ -41,8 +41,9 @@ namespace B02_TextRPG
                         (player.Level, player.Name, player.Job, player.Attack, player.Defense, player.Health, player.Gold, player.AttackPlus, player.DefensePlus);
                     break;
                 case 2:
-                    battleManager.StartBattle(player);
-
+                    battlemanager = new BattleManager();
+                    
+                    battlemanager.StartBattle(player);
                     break;
                 case 3: // 포션 먹는 메소드 
                     potionUse(player);

@@ -12,7 +12,7 @@ namespace B02_TextRPG
         {
             GameManager gameManager = new GameManager();
             gameManager.GameIntro();
-            BattleManager battleManager = new BattleManager();
+            
         }
     }
     public class GameManager
@@ -22,7 +22,7 @@ namespace B02_TextRPG
 
         public GameManager()
         {
-            battleManager = new BattleManager();
+           
         }
 
 
