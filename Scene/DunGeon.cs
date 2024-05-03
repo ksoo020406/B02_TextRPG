@@ -9,11 +9,11 @@ namespace B02_TextRPG
     internal class DunGeon
     {
 
-        public DunGeon() { }    
-        
+        public DunGeon() { }
+
         public static void StartDunGeon(Player player)
         {
-            
+
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■"); // 60개 
@@ -31,14 +31,19 @@ namespace B02_TextRPG
             Console.ResetColor();
             Console.WriteLine();
 
-            int input = ConsoleUtility.PromptMenuChoice(0,3);
-            BattleManager battleManager = new BattleManager();
-            switch(input)
+            int input = ConsoleUtility.PromptMenuChoice(0, 3);
+            BattleManager battlemanager;
+            
+            switch (input)
             {
-                case 1: Player.ShowInfo
+                case 1:
+                    Player.ShowInfo
                         (player.Level, player.Name, player.Job, player.Attack, player.Defense, player.Health, player.Gold, player.AttackPlus, player.DefensePlus);
                     break;
-                case 2: battleManager.StartBattle(player);
+                case 2:
+                    battlemanager = new BattleManager();
+                    
+                    battlemanager.StartBattle(player);
                     break;
                 case 3: // 포션 먹는 메소드 
                     potionUse(player);
@@ -49,19 +54,19 @@ namespace B02_TextRPG
 
         public static void potionUse(Player player)
         {
-                Console.Clear();
+            Console.Clear();
 
-                Console.WriteLine("**회복**");
-                // 플레이어가 가지고 있는 포션 개수로 표시 
-                Console.WriteLine($"포션을 사용하면 체력을 30 회복 할 수 있습니다. (남은 포션 : {player.Potion})");
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine("1. 사용하기");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("0. 나가기");
-                Console.ResetColor();
-                Console.WriteLine();
-                int input = ConsoleUtility.PromptMenuChoice(0, 1);
+            Console.WriteLine("**회복**");
+            // 플레이어가 가지고 있는 포션 개수로 표시 
+            Console.WriteLine($"포션을 사용하면 체력을 30 회복 할 수 있습니다. (남은 포션 : {player.Potion})");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("1. 사용하기");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("0. 나가기");
+            Console.ResetColor();
+            Console.WriteLine();
+            int input = ConsoleUtility.PromptMenuChoice(0, 1);
 
             switch (input)
             {

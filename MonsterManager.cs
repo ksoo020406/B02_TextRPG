@@ -8,6 +8,7 @@ namespace B02_TextRPG
 {
     public class MonsterManager
     {
+        private Random random = new Random();
         private List<Monster> monsters;
 
         public MonsterManager()
@@ -28,5 +29,16 @@ namespace B02_TextRPG
             return monsters;
         }
 
+        public void DisplayRandomMonsters()
+        {
+            int numMonsters = random.Next(1, 5);
+
+            for (int i = 0; i < numMonsters; i++)
+            {
+                int randomIndex = random.Next(0, monsters.Count);
+                Monster monster = monsters[randomIndex];
+                Console.WriteLine($"Battle!!\n\nLv.{monster.Level} {monster.Name}  HP {monster.Health}");
+            }
+        }
     }
 }
