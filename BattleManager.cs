@@ -22,7 +22,7 @@ namespace B02_TextRPG
 
             foreach (var monster in monsters)
             {
-                Console.WriteLine($"Lv.{monster.MonsterLevel} {monster.MonsterName} HP {monster.MonsterHealth}");
+                Console.WriteLine($"Lv.{monster.Level} {monster.Name} HP {monster.Health}");
             }
 
             Console.WriteLine();

@@ -5,24 +5,37 @@ using System.Xml.Linq;
 
 namespace B02_TextRPG
 {
-    public class Monster
+    public class Monster : IDamage
     {
-        public string MonsterName { get; set; }
-        public int MonsterLevel { get; set; }
-        public int MonsterHealth { get; set; }
-        public int MonsterPower { get; set; }
-        public bool IsDead { get; set; }
+        public string Name { get; set; }
+        public int Level { get; set; }
+        public int Health { get; set; }
+        public int Attack { get; set; }
+        public int Defense { get; set; }
+        public int Gold { get; set; }
+        public bool isDead { get; set; }
 
 
-        public Monster(string monsterName, int monsterLevel, int monsterHealth, int monsterPower)
+
+
+
+        public Monster(string name, int level, int health, int attack)
         {
-            MonsterLevel = monsterLevel;
-            MonsterName = monsterName;
-            MonsterHealth = monsterHealth;
-            MonsterPower = monsterPower;
-            IsDead = false;
+            Name = name;
+            Level = level;
+            Health = health;
+            Attack = attack;
         }
 
-
+        public int Attackopp(IDamage opp)
+        {
+            int damage = Attack;
+            opp.Health -= damage;
+            if (opp.Health < 0)
+            {
+                opp.isDead = true;
+            }
+            return damage;
+        }
     }
 }

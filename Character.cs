@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace B02_TextRPG
 {
-    public class Player
+    public class Player : IDamage
     {
         public int Level { get; set; } //캐릭터 레벨
         public string Name { get; set; } //캐릭터 이름
@@ -20,24 +20,35 @@ namespace B02_TextRPG
         public int DefensePlus { get; set; }
         public int Gold { get; set; } // 캐릭터 소지 골드
         public int Health { get; set; }//캐릭터 체력
-        
+        public int MaxHealth { get; set; }
         public int Potion { get; set; }
-       
-        
-        
+        public bool isDead { get; set; }
 
-        public Player(string name, string job)
+
+
+
+        public Player(string name, string job, int level, int atk, int def, int health, int gold)
         {
-            Level = 1;
+            Level = level;
             Name = name;
             Job = job;
             SetJobStats();
             Gold = 10000;
-            Health = 100;
+            Health = health;
+            MaxHealth = health;
+            Attack = atk;
+            Defense = def;
             DefensePlus = 0;
             AttackPlus = 0;
             Potion = 3;
         }
+
+        public Player(string? name, string? job)
+        {
+            Name = name;
+            Job = job;
+        }
+
         public void SetJobStats() //직업정보
         {
             switch (Job)
@@ -100,20 +111,19 @@ namespace B02_TextRPG
 
             }
         }
-        public void DamageHealth(int damage)
+        public int Attackopp(IDamage opp)
         {
-            Health -= damage; 
-            if (Health <= 0) 
+            int damage = Attack;
+            opp.Health -= damage;
+            if (opp.Health < 0)
             {
-                Die(); 
+                opp.isDead = true;
             }
+            return damage;
         }
 
 
-        private void Die()
-        {
-            Console.WriteLine("Character is dead.");
-        }
+
     }
 }
 
