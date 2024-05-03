@@ -38,7 +38,7 @@ namespace B02_TextRPG
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("");
-            Console.WriteLine("                                                   ::PESS ANYKEY TO START::");
+            Console.WriteLine("                                                   ::PRESS ANYKEY TO START::");
             Console.WriteLine("");
             Console.WriteLine("");
 

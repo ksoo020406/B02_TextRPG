@@ -11,7 +11,14 @@ namespace B02_TextRPG
     {
         public static void StartQuest1(Player player)
         {
+            Console.Clear();
             Console.WriteLine("과제발생기 강탈 미션을 시작합니다.");
+
+            Console.WriteLine();
+            Console.WriteLine("0. 마을로 돌아가기");
+
+            Console.WriteLine();
+            Console.Write(">>");
 
             int choice = ConsoleUtility.PromptMenuChoice(0, 3);
 
