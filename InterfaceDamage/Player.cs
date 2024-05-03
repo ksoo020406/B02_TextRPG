@@ -27,26 +27,36 @@ namespace B02_TextRPG
 
 
 
-        public Player(string name, string job, int level, int atk, int def, int health, int gold)
+        //public Player(string name, string job, int level, int atk, int def, int health, int gold)
+        //{
+        //    Level = level;
+        //    Name = name;
+        //    Job = job;
+        //    SetJobStats();
+        //    Gold = 10000;
+        //    Health = health;
+        //    MaxHealth = health;
+        //    Attack = atk;
+        //    Defense = def;
+        //    DefensePlus = 0;
+        //    AttackPlus = 0;
+        //    Potion = 3;
+        //}
+
+        public Player(string name, string job)
         {
-            Level = level;
+            Level = 1;
             Name = name;
             Job = job;
             SetJobStats();
             Gold = 10000;
-            Health = health;
-            MaxHealth = health;
-            Attack = atk;
-            Defense = def;
+            Health = 100;
+            MaxHealth = Health;
+            Attack = Attack;
+            Defense = Defense;
             DefensePlus = 0;
             AttackPlus = 0;
             Potion = 3;
-        }
-
-        public Player(string? name, string? job)
-        {
-            Name = name;
-            Job = job;
         }
 
         public void SetJobStats() //직업정보
