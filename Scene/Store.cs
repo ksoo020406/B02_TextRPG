@@ -42,7 +42,7 @@ namespace B02_TextRPG
             Console.ResetColor();
             Console.WriteLine();
             Console.WriteLine();
-            int input = ConsoleUtility.PromptMenuChoice(0,2);
+            int input = ConsoleUtility.PromptMenuChoice(0, 2);
 
             if (input == 1)
             {
@@ -55,7 +55,7 @@ namespace B02_TextRPG
             else if (input == 0)
             {
                 GameManager gm = new GameManager();
-                gm.MainMenu(player); 
+                gm.MainMenu(player);
 
             }
 
@@ -64,78 +64,94 @@ namespace B02_TextRPG
 
         public static void PurchasedMogi(Player player)
         {
-        
-                Console.Clear();
 
-                Console.WriteLine("**상점**");
-                Console.WriteLine("필요한 아이템을 얻을 수 있는 상점입니다.");
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine("[보유 골드]");
-                Console.WriteLine($"{player.Gold} G");
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine("[아이템 목록]");
-                for (int i = 0; i < Item.storeItems.Count; i++)
-                {
-                     Console.Write($" - {i + 1} "); Item.storeItems[i].PrintItemStatChange1();
-                 }
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("0. 나가기");
-                Console.ResetColor();
-                int input = ConsoleUtility.PromptMenuChoice(0, Item.storeItems.Count);
+            Console.Clear();
 
-                switch (input)
-                {
-                    case 0: ShowStore(player); break;
-                    default:
-                    
-                        if (Item.storeItems.Count >= input && 1 <= input)
+            Console.WriteLine("**상점**");
+            Console.WriteLine("필요한 아이템을 얻을 수 있는 상점입니다.");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("[보유 골드]");
+            Console.WriteLine($"{player.Gold} G");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("[아이템 목록]");
+            for (int i = 0; i < Item.storeItems.Count; i++)
+            {
+                Console.Write($" - {i + 1} "); Item.storeItems[i].PrintItemStatChange1();
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("0. 나가기");
+            Console.ResetColor();
+            int input = ConsoleUtility.PromptMenuChoice(0, Item.storeItems.Count);
+
+            switch (input)
+            {
+                case 0: ShowStore(player); break;
+                default:
+
+                    if (Item.storeItems.Count >= input && 1 <= input)
+                    {
+                        Item selectedItem = Item.storeItems[input - 1];
+                        if (selectedItem.Purchase)
                         {
-                            Item selectedItem = Item.storeItems[input - 1];
-                            if (selectedItem.Purchase)
-                            {
                             // 아이템 구매
-                                Console.WriteLine();
-                                Console.WriteLine("이미 구매한 아이템 입니다! 다시 입력해 주세요!");
-                                Thread.Sleep(800);
-                                PurchasedMogi(player);
+                            Console.WriteLine();
+                            Console.WriteLine("이미 구매한 아이템 입니다! 다시 입력해 주세요!");
+                            Thread.Sleep(800);
+                            PurchasedMogi(player);
 
-                            }
-                            else if (player.Gold >= selectedItem.Gold)
+                        }
+                        else if (player.Gold >= selectedItem.Gold)
+                        {
+                            // 재화 감소
+                            player.Gold -= selectedItem.Gold;
+                            // 구매 
+                            selectedItem.Purchase = true;
+                            // 구매한 아이템 리스트에 추가 
+                            Item.InventoryItems.Add(selectedItem);
+
+                            // 구매한 아이템이 InventoryItems에 추가 되고 나서
+                            // 인벤토리 아이템에서 아이템 타입이 CONSUME면
+                            if (selectedItem.ThisItemType == ItemType.CONSUME)
                             {
-                                // 재화 감소
-                                player.Gold -= selectedItem.Gold;
-                                // 구매 
-                                selectedItem.Purchase = true;
-                                // 구매한 아이템 리스트에 추가 
-                                Item.InventoryItems.Add(selectedItem);
-                                Console.WriteLine("구매를 완료했습니다!");
-                                PurchasedMogi(player);
+                                // ConsumeItems 리스트에 추가
+                                Item.ConsumeItems.Add(selectedItem);
                             }
-                            else if (player.Gold < selectedItem.Gold)
-                            { 
-                                
-                                Console.WriteLine("골드가 부족합니다..");
-                                Thread.Sleep(500);
-                                PurchasedMogi(player);
-                        }
-                            else
+
+                            // 인벤토리 아이템에서 아이템 타입이 WEAPON 이거나 ARMOR 이면
+                            if (selectedItem.ThisItemType == ItemType.WEAPON || selectedItem.ThisItemType == ItemType.ARMOR)
                             {
-                                Console.WriteLine("잘못된 입력입니다.");
-                                Thread.Sleep(500);
-                                PurchasedMogi(player);
+                                // EquippedItems 리스트에 추가
+                                Item.EquippedItems.Add(selectedItem);
+                            }
+
+                            Console.WriteLine("구매를 완료했습니다!");
+                            PurchasedMogi(player);
                         }
-                          
+                        else if (player.Gold < selectedItem.Gold)
+                        {
+
+                            Console.WriteLine("골드가 부족합니다..");
+                            Thread.Sleep(500);
+                            PurchasedMogi(player);
                         }
+                        else
+                        {
+                            Console.WriteLine("잘못된 입력입니다.");
+                            Thread.Sleep(500);
+                            PurchasedMogi(player);
+                        }
+
+                    }
                     ShowStore(player);
-                        break;
-                }
-        
-            
-            
+                    break;
+            }
+
+
+
         }
 
 
@@ -187,15 +203,19 @@ namespace B02_TextRPG
                         {
                             selectedItem.Purchase = false;
                             selectedItem.Equipped = false;
+                            selectedItem.Consumed = false;
+
                             Item.InventoryItems.Remove(selectedItem);
+                            Item.EquippedItems.Remove(selectedItem);
+                            Item.ConsumeItems.Remove(selectedItem);
                             // 다시 원상태로
                             player.AttackPlus -= selectedItem.AttackPower;
                             player.DefensePlus -= selectedItem.DefensePower;
+
+                            // 아이템 판매 및 골드 추가
+                            player.Gold += (int)(selectedItem.Gold * 0.85);
                         }
-                        // 아이템 판매 및 골드 추가
-                        player.Gold += (int)(selectedItem.Gold * 0.85);
-                        selectedItem.Purchase = false;
-                        Item.InventoryItems.Remove(selectedItem);
+
                         Thread.Sleep(800);
                         Resale(player);
 

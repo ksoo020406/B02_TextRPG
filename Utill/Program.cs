@@ -29,15 +29,18 @@ namespace B02_TextRPG
         public void StoreItems(Player player)
         {
 
-            Item Armor1 = new Item("수련자의 갑옷", " 수련에 도움을 주는 갑옷입니다. ", 0, 5, 1000);
-            Item Armor = new Item("무쇠 갑옷", "무쇠로 만들어져 튼튼한 갑옷입니다.", 0, 9, 2000);
-            Item SpartaArmor = new Item("스파르타의 갑옷", "스파르타의 전사들이 사용했다는 전설의 갑옷입니다.", 0, 15, 3500);
-            Item Spear = new Item("스파르타의 창", "스파르타의 전사들이 사용했다는 전설의 창입니다.", 7, 0, 1500);
-            Item Sword = new Item("낡은 검", " 쉽게 볼 수 있는 낡은 검 입니다.", 2, 0, 600);
-            Item axe = new Item("청동 도끼", " 어디선가 사용됐던거 같은 도끼입니다.", 7, 0, 1800);
-            Item sujin = new Item("수진이의 사랑", "이 분의 사랑만 있으면 공격력이 올라갑니다.", 100, 0, 50000);
-            Item potion = new Item("백두산 물", "백두산에서 흐르는 물로 만들었습니다.(1회성)",20,300);
-            Item sujins = new Item("수진이의 눈물", "이 분의 눈물만 있으면 체력이 다 채워집니다.(1", 100, 1000);
+            Item Armor1 = new Item(ItemType.ARMOR, "수련자의 갑옷", "수련에 도움을 주는 갑옷입니다.", 0, 5, 1000);
+            Item Armor = new Item(ItemType.ARMOR, "무쇠 갑옷", "무쇠로 만들어져 튼튼한 갑옷입니다.", 0, 9, 2000);
+            Item SpartaArmor = new Item(ItemType.ARMOR, "스파르타의 갑옷", "스파르타의 전사들이 사용했다는 전설의 갑옷입니다.", 0, 15, 3500);
+
+            Item Spear = new Item(ItemType.WEAPON, "스파르타의 창", "스파르타의 전사들이 사용했다는 전설의 창입니다.", 7, 0, 1500);
+            Item Sword = new Item(ItemType.WEAPON, "낡은 검", "쉽게 볼 수 있는 낡은 검 입니다.", 2, 0, 600);
+            Item axe = new Item(ItemType.WEAPON, "청동 도끼", "어디선가 사용됐던거 같은 도끼입니다.", 7, 0, 1800);
+
+            Item sujin = new Item(ItemType.SPECIAL, "수진이의 사랑", "이 분의 사랑만 있으면 공격력이 올라갑니다.", 100, 0, 50000);
+
+            Item potion = new Item(ItemType.CONSUME,"백두산 물", "백두산에서 흐르는 물로 만들었습니다.(1회성)",20,300);
+            Item sujins = new Item(ItemType.CONSUME, "수진이의 눈물", "이 분의 눈물만 있으면 체력이 다 채워집니다.(1회성)", 100, 1000);
 
             Item.storeItems.Add(Armor1);
             Item.storeItems.Add(Armor);
