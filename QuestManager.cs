@@ -33,8 +33,7 @@ namespace B02_TextRPG
                 Console.WriteLine("0. 마을로 돌아가기");
 
                 Console.WriteLine();
-                Console.WriteLine("참여하실 퀘스트 번호를 입력해주세요");
-                Console.Write(">>");
+
 
 
                 int choice = ConsoleUtility.PromptMenuChoice(0, 3);
@@ -76,14 +75,15 @@ namespace B02_TextRPG
             Console.WriteLine("1. 당연히 참여한다");
             Console.WriteLine("0. 무서우니 도망친다");
             Console.WriteLine();
-            Console.Write(">>");
 
             int choice = ConsoleUtility.PromptMenuChoice(0, 1);
 
             switch (choice)
             {
                 case 0:
-                    return;
+                    GameManager gameManager = new GameManager(); //게임매니저 인스턴스 생성      
+                    gameManager.MainMenu(player);  // 플레이어 정보를 MainMenu 메서드에 전달
+                    break;
 
                 case 1:
                     StartQuest.StartQuest1(player);
@@ -100,24 +100,30 @@ namespace B02_TextRPG
             Console.WriteLine("난이도 : ★ ★ ★");
 
             Console.WriteLine();
-            Console.WriteLine("'오늘은 내가 짝사랑하던 수진이에게 고백하는 날'");
-            Console.WriteLine("'대화를 통해 호감을 쌓아 고백에 성공해야해!'");
-            
+            Console.WriteLine("| ♡⃘♡⃘♡⃘♡⃘♡⃘♡⃘♡⃘♡⃘♡-----------------------------------|");
+            Console.WriteLine("| 　　　　　　　　　　　　　　　                      |");
+            Console.WriteLine("| 　　　　　화창한 날씨!!!　　　　　　　　　　        |");
+            Console.WriteLine("| 　　　　　내가 짝사랑하는 옆반 수진이에게　　　     |");
+            Console.WriteLine("| 　　　　　고백을 할거야            　　　           |");
+            Console.WriteLine("| 　　　　　　　　　　　　　　　                      |");
+            Console.WriteLine("|------------------------------------♡⃘♡⃘♡⃘♡⃘♡⃘♡⃘♡⃘♡⃘♡");
+
             Console.WriteLine();
             Console.WriteLine("1. 수진아 기다려 내가 간다!");
             Console.WriteLine("0. 자신없이 없어.. 마을로 도망갈래");
             Console.WriteLine();
-            Console.Write(">>");
 
             int choice = ConsoleUtility.PromptMenuChoice(0, 1);
 
             switch (choice)
             {
                 case 0:
-                    return;
+                    GameManager gameManager = new GameManager(); //게임매니저 인스턴스 생성      
+                    gameManager.MainMenu(player);  // 플레이어 정보를 MainMenu 메서드에 전달
+                    break;
 
                 case 1:
-                    StartQuest.StartQuest2(player);
+                    StartQuest.Sujin1(player);
                     break;
 
             }
