@@ -83,10 +83,13 @@ namespace B02_TextRPG
                 Console.WriteLine("");
                 Console.WriteLine("0. 종료");
                 Console.WriteLine("");
+                Console.WriteLine("9. 임시 아이템 파밍장");
+                Console.WriteLine("");
+
 
 
                 // 2. 선택한 결과를 검증한다.
-                int choice = ConsoleUtility.PromptMenuChoice(0, 5);
+                int choice = ConsoleUtility.PromptMenuChoice(0, 9);
                 // 3. 선택한 결과에 따라 보내준다.
                 switch (choice)
                 {
@@ -107,6 +110,9 @@ namespace B02_TextRPG
                         break;
                     case 5:
                         QuestManager.Quest(player);
+                        break;
+                    case 9:
+                        Farming.FarmingStage(player);
                         break;
                 }
 

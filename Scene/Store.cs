@@ -32,7 +32,7 @@ namespace B02_TextRPG
             Console.WriteLine();
             for (int i = 0; i < Item.InventoryItems.Count; i++) // 리스트에는 항상 Count(몇 개?)라는 값이 있다.
             {
-                Console.Write($" - {i + 1}"); Item.InventoryItems[i].PrintItemStatChange();
+                Console.Write($" - {i + 1}. "); Item.InventoryItems[i].PrintItemStatChange1();
             }
             Console.WriteLine();
             Console.WriteLine("1. 아이템 구매");
@@ -78,7 +78,7 @@ namespace B02_TextRPG
             Console.WriteLine("[아이템 목록]");
             for (int i = 0; i < Item.storeItems.Count; i++)
             {
-                Console.Write($" - {i + 1} "); Item.storeItems[i].PrintItemStatChange1();
+                Console.Write($" - {i + 1}. "); Item.storeItems[i].PrintItemStatChange1();
             }
             Console.WriteLine();
             Console.WriteLine();
@@ -166,16 +166,16 @@ namespace B02_TextRPG
             Console.WriteLine();
             Console.WriteLine("[아이템 목록]");
             Console.WriteLine();
+
             //보유한 아이템 목록 띄우기
             for (int i = 0; i < Item.InventoryItems.Count; i++)
             {
-                if (Item.InventoryItems[i].Purchase)
+                if (Item.InventoryItems[i].ThisItemType == ItemType.WEAPON || Item.InventoryItems[i].ThisItemType == ItemType.ARMOR || Item.InventoryItems[i].ThisItemType == ItemType.CONSUME || Item.InventoryItems[i].ThisItemType == ItemType.SPECIAL)
                 {
-                    Console.Write($" - {i + 1}"); Item.InventoryItems[i].PrintItemStatChange();
+                    Console.Write($" - {i + 1}. "); Item.InventoryItems[i].PrintItemStatChange2();
                 }
-
-
             }
+
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("0. 나가기");
