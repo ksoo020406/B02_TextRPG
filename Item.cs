@@ -40,7 +40,7 @@ namespace B02_TextRPG
 
 
         // 능력치 아이템
-        public Item(ItemType thisItemType,string name, string description, int attack, int defense, int gold, bool equipped = false)
+        public Item(ItemType thisItemType, string name, string description, int attack, int defense, int gold, bool equipped = false)
         {
             ThisItemType = thisItemType;
             Name = name;
@@ -53,7 +53,7 @@ namespace B02_TextRPG
         }
 
         // 힐 아이템
-        public Item(ItemType thisItemType, string name, string description,int heal, int gold, bool equipped = false, bool consumed = false)
+        public Item(ItemType thisItemType, string name, string description, int heal, int gold, bool equipped = false, bool consumed = false)
         {
             ThisItemType = thisItemType;
             Name = name;
@@ -81,7 +81,7 @@ namespace B02_TextRPG
 
         internal void PrintItemStatChange(bool anOptionNumber = false, int idx = 0)
         {
-            
+
             if (anOptionNumber && !Equipped) // 장착 전 표시
             {
                 Console.Write($"{idx}. ");
@@ -110,12 +110,12 @@ namespace B02_TextRPG
         internal void PrintItemStatChange1(bool anOptionNumber = false, int idx = 0)
         {
 
-            Console.Write(ConsoleUtility.SpacingLetters(Name, 19));
-     
+            Console.Write(ConsoleUtility.SpacingLetters(Name, 16));
+
 
             string Statistics = AttackPower > 0 ? $"공격력: {AttackPower}" :
-                                DefensePower > 0 ? $"방어력: {DefensePower}" : 
-                                HealingPower >0 ? $"체력: {HealingPower}" : "";
+                                DefensePower > 0 ? $"방어력: {DefensePower}" :
+                                HealingPower > 0 ? $"체력: {HealingPower}" : "";
 
             Console.Write(" | ");
             Console.Write(ConsoleUtility.SpacingLetters(Statistics, 12));
@@ -123,7 +123,38 @@ namespace B02_TextRPG
             Console.Write(ConsoleUtility.SpacingLetters(Description, 50));
             Console.Write(" | ");
             string status = Purchase ? "구매완료" : $"{Gold} G";
-            Console.WriteLine(ConsoleUtility.SpacingLetters(status,5));
+            Console.WriteLine(ConsoleUtility.SpacingLetters(status, 5));
+
+        }
+
+        internal void PrintItemStatChange2(bool anOptionNumber = false, int idx = 0)
+        {
+            if (anOptionNumber && !Equipped) // 장착 전 표시
+            {
+                Console.Write($"");
+            }
+            if (Equipped) // 장착 후 표시2
+            {
+                Console.Write("[E]");
+
+                Console.Write(ConsoleUtility.SpacingLetters(Name, 16));
+            }
+            else Console.Write(ConsoleUtility.SpacingLetters(Name, 19));//[E]+16
+
+            string Statistics = AttackPower > 0 ? $"공격력: {AttackPower}" :
+                                DefensePower > 0 ? $"방어력: {DefensePower}" :
+                                HealingPower > 0 ? $"체력: {HealingPower}" : "";
+
+            Console.Write(" | ");
+            Console.Write(ConsoleUtility.SpacingLetters(Statistics, 12));
+            Console.Write(" | ");
+            Console.Write(ConsoleUtility.SpacingLetters(Description, 50));
+            Console.Write(" | ");
+
+            int gold = Gold;
+
+            string status = $"판매액 {gold * 0.85} G";
+            Console.WriteLine(ConsoleUtility.SpacingLetters(status, 10));
 
         }
 
@@ -134,6 +165,7 @@ namespace B02_TextRPG
         }
 
         //소비관리용 메소드
+
         internal void ToggleConsume()
         {
             Consumed = !Consumed; // 사용됨의 반대
