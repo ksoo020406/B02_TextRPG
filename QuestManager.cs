@@ -28,7 +28,7 @@ namespace B02_TextRPG
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("1. 과제발생기 강탈 미션 ★");                      // 기본 공격으로 매니저님들의 컴퓨터를 부수면 되는 게임
-                Console.WriteLine("2. 거대한 혁최몬 소탕 미션 ★ ★ ★");               // 혁최몬 체력이 좀 더 많아집니다
+                Console.WriteLine("2. 수진이의 사랑을 얻어라 ★ ★ ★");               // 혁최몬 체력이 좀 더 많아집니다
                 Console.WriteLine("3. 스파르타 코딩클럽에서 생존하기 ★ ★ ★ ★ ★");    // 일단 넣어봄
                 Console.WriteLine("0. 마을로 돌아가기");
 
@@ -96,17 +96,16 @@ namespace B02_TextRPG
         {
             Console.Clear();
 
-            Console.WriteLine("[ 퀘스트2. 거대한 혁최몬 소탕 미션 ]");
+            Console.WriteLine("[ 퀘스트2. 수진이의 사랑을 얻어라! ]");
             Console.WriteLine("난이도 : ★ ★ ★");
 
             Console.WriteLine();
-            Console.WriteLine("'큰일이야!! " + Start.player.Name + " !!!'");
-            Console.WriteLine("'혁최몬이 내가 낸 과제물을 보고 분노해서 거대해져버렸대!!'");
-            Console.WriteLine("'마을 사람들을 마구 찌르며 괴롭히고 있다는데, 도와주지 않을래?'");
+            Console.WriteLine("'오늘은 내가 짝사랑하던 수진이에게 고백하는 날'");
+            Console.WriteLine("'대화를 통해 호감을 쌓아 고백에 성공해야해!'");
             
             Console.WriteLine();
-            Console.WriteLine("1. 당연히 참여한다");
-            Console.WriteLine("0. 무서우니 도망친다");
+            Console.WriteLine("1. 수진아 기다려 내가 간다!");
+            Console.WriteLine("0. 자신없이 없어.. 마을로 도망갈래");
             Console.WriteLine();
             Console.Write(">>");
 
@@ -118,7 +117,7 @@ namespace B02_TextRPG
                     return;
 
                 case 1:
-                    // 퀘스트 2번으로 가야한다
+                    StartQuest.StartQuest2(player);
                     break;
 
             }
