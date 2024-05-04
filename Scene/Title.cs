@@ -24,7 +24,7 @@ namespace B02_TextRPG
             Console.Write("        ::"); Console.Write("   /::::\\   \\:::\\    \\   ______          ::::: __  :::::::: ");            Console.WriteLine("  ( \\( 0O )     ( \\( -O )  ( OO ). (  OO) )   ");
             Console.Write("        ::"); Console.Write("  /::::::\\   \\:::\\    \\ /\\__  _\\           :: /\\ \\__::::::: ");        Console.WriteLine("   ,------.,-.-') ,------. (_)---\\_)/     '._  ");
             Console.Write("        ::"); Console.Write(" /:::/\\:::\\   \\:::\\    \\\\/_/\\ \\/    __   __  _\\ \\ ,_\\:::::: ");     Console.WriteLine("('-| _.---'|  |OO)|   /`. '/    _ | |'--...__) ");
-            Console.Write("        ::"); Console.Write("/:::/  \\:::\\   \\:::\\____\\  \\ \\ \\  /'__`\\/\\ \\/'\\\\ \\ \\  ::::: "); Console.WriteLine("(OO|(_\\    |  |  \\|  /  | |\\  :` `. '--.  .--' ");
+            Console.Write("        ::"); Console.Write("/:::/  \\:::\\   \\:::\\____\\  \\ \\ \\  /'__`\\/\\ \\/'\\\\ \\ \\/ ::::: "); Console.WriteLine("(OO|(_\\    |  |  \\|  /  | |\\  :` `. '--.  .--' ");
             Console.Write("        ::"); Console.Write("\\::/    \\:::\\   \\::/    /   \\ \\ \\/\\  __/\\/>  </ \\ \\ \\_ :::: ");    Console.WriteLine("/  |  '--. |  |(_/|  |_.' | '..`''.)   |  |   ");
             Console.Write("        ::"); Console.Write(" \\/____/ \\:::\\   \\/____/     \\ \\_\\ \\____\\/\\_/\\_\\ \\ \\__\\ ::: "); Console.WriteLine("\\_)|  .--',|  |_.'|  .  '.'.-._)   \\   |  |   ");
             Console.Write("        ::"); Console.Write("          \\:::\\    \\          \\/_/\\/____/\\//\\/_/  \\/__/  :: ");        Console.WriteLine("  \\|  |_)(_|  |   |  |\\  \\ \\       /   |  |    ");
