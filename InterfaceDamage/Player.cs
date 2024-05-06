@@ -123,13 +123,18 @@ namespace B02_TextRPG
         }
         public int Attackopp(IDamage opp)
         {
-            int damage = Attack;
+            Random random = new Random();
+            double fluctuation = Attack * 0.1; // 공격력의 10%
+            double randomFluctuation = random.NextDouble() * fluctuation * 2 - fluctuation; // -10% ~ 10% 사이의 무작위 값
+            int finalAttack = Attack + (int)Math.Ceiling(randomFluctuation); // 오차를 더하고, 소수점이라면 올림 처리
+
+            int damage = finalAttack;
             opp.Health -= damage;
-            if (opp.Health < 0)
+            if (opp.Health <= 0)
             {
                 opp.isDead = true;
             }
-            return damage;
+            return damage; // 실제로 입힌 피해량을 반환
         }
 
 
