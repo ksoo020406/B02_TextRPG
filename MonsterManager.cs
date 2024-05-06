@@ -26,19 +26,21 @@ namespace B02_TextRPG
 
         public List<Monster> GetMonsters()
         {
+            List<Monster> monsters = new List<Monster>();
+
+            // 랜덤한 수의 몬스터를 생성
+            Random random = new Random();
+            int numberOfMonsters = random.Next(1, 5); // 1부터 4까지의 랜덤한 수
+
+            for (int i = 0; i < numberOfMonsters; i++)
+            {
+                // 몬스터를 생성하고 목록에 추가
+                monsters.Add(this.monsters[random.Next(this.monsters.Count)]);
+            }
             return monsters;
         }
 
-        public void DisplayRandomMonsters()
-        {
-            int numMonsters = random.Next(1, 5);
+        
 
-            for (int i = 0; i < numMonsters; i++)
-            {
-                int randomIndex = random.Next(0, monsters.Count);
-                Monster monster = monsters[randomIndex];
-                Console.WriteLine($"Lv.{monster.Level} {monster.Name}  HP {monster.Health}");
-            }
-        }
     }
 }

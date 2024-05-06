@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,7 +50,7 @@ namespace B02_TextRPG
             Name = name;
             Job = job;
             SetJobStats();
-            Gold = 10000;
+            Gold = 60000;
             Health = 100;
             MaxHealth = Health;
             Attack = Attack;
@@ -111,6 +112,19 @@ namespace B02_TextRPG
             Console.WriteLine($"체력 : {Health}");
             Console.WriteLine($"Gold : {Gold} G");
 
+            Console.WriteLine("");
+            Console.WriteLine("[영구버프]");
+            Console.WriteLine("");
+
+            for (int i = 0; i < Item.InventoryItems.Count; i++) // 리스트에는 항상 Count(몇 개?)라는 값이 있다.
+            {
+                //인벤토리 아이템 타입 판별하기
+                if (Item.InventoryItems[i].ThisItemType == ItemType.SPECIAL)
+                {
+                    Console.WriteLine("당신에겐 " + Item.InventoryItems[i].Name + "이 깃들어있습니다.");
+                }
+            }
+
             Console.WriteLine();
             Console.WriteLine("0. 나가기");
 
@@ -123,13 +137,18 @@ namespace B02_TextRPG
         }
         public int Attackopp(IDamage opp)
         {
-            int damage = Attack;
+            Random random = new Random();
+            double fluctuation = Attack * 0.1; // 공격력의 10%
+            double randomFluctuation = random.NextDouble() * fluctuation * 2 - fluctuation; // -10% ~ 10% 사이의 무작위 값
+            int finalAttack = Attack + (int)Math.Ceiling(randomFluctuation); // 오차를 더하고, 소수점이라면 올림 처리
+
+            int damage = finalAttack;
             opp.Health -= damage;
-            if (opp.Health < 0)
+            if (opp.Health <= 0)
             {
                 opp.isDead = true;
             }
-            return damage;
+            return damage; // 실제로 입힌 피해량을 반환
         }
 
 

@@ -113,16 +113,20 @@ namespace B02_TextRPG
                             // 구매한 아이템 리스트에 추가 
                             Item.InventoryItems.Add(selectedItem);
 
-                            // 구매한 아이템이 InventoryItems에 추가 되고 나서
+                            // 인벤토리 아이템에서 아이템 타입이 SPECIAL 이면
+                            if (selectedItem.ThisItemType == ItemType.SPECIAL)
+                            {
+                                Item.GetBuff(player);
+                            }
                             // 인벤토리 아이템에서 아이템 타입이 CONSUME면
-                            if (selectedItem.ThisItemType == ItemType.CONSUME)
+                            else if (selectedItem.ThisItemType == ItemType.CONSUME)
                             {
                                 // ConsumeItems 리스트에 추가
                                 Item.ConsumeItems.Add(selectedItem);
                             }
 
                             // 인벤토리 아이템에서 아이템 타입이 WEAPON 이거나 ARMOR 이면
-                            if (selectedItem.ThisItemType == ItemType.WEAPON || selectedItem.ThisItemType == ItemType.ARMOR)
+                            else if (selectedItem.ThisItemType == ItemType.WEAPON || selectedItem.ThisItemType == ItemType.ARMOR)
                             {
                                 // EquippedItems 리스트에 추가
                                 Item.EquippedItems.Add(selectedItem);
