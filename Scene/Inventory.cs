@@ -16,6 +16,8 @@ namespace B02_TextRPG
             Console.WriteLine("");
             Console.WriteLine("보유 중인 소지품을 관리할 수 있습니다.");
             Console.WriteLine("");
+            Console.WriteLine($"기본 체력 포션 :  {player.Potion}");
+            Console.WriteLine("");
             Console.WriteLine("[아이템 목록]"); // todo 스페셜 아이템 따로 추가해주기
             Console.WriteLine("");
             Console.WriteLine("[스페셜]");
