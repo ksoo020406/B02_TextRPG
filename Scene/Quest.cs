@@ -323,16 +323,16 @@ namespace B02_TextRPG
                     Console.WriteLine("                     ......                        ");
                     Console.WriteLine("                    .........                      ");
                     Console.WriteLine("                   ...........                     ");
-                    Console.WriteLine("                  ...............                  ");
-                    Console.WriteLine("               ... ................                ");
-                    Console.WriteLine("              .. ...................               ");
-                    Console.WriteLine("             ...  ...................              ");
-                    Console.WriteLine("             ....  ...................             ");
-                    Console.WriteLine("             . ...  ..................             ");
-                    Console.WriteLine("             . ...  ..................             ");
-                    Console.WriteLine("             . ...  .................              ");
+                    Console.WriteLine("                 ...............                   ");
+                    Console.WriteLine("               ... ...............                 ");
+                    Console.WriteLine("              ...  ................                ");
+                    Console.WriteLine("             ...  ..................               ");
+                    Console.WriteLine("             ...  ..................               ");
+                    Console.WriteLine("             . .  ..................               ");
+                    Console.WriteLine("             . .  ..................               ");
+                    Console.WriteLine("             . ..  .................               ");
                     Console.WriteLine("              .....................                ");
-                    Console.WriteLine("               ...................                 ");
+                    Console.WriteLine("               .....  ...........                 ");
                     Console.WriteLine("                    .........                      ");
                     Console.WriteLine();
 
