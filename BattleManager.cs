@@ -169,11 +169,10 @@ namespace B02_TextRPG
             {
                 if (!monster.isDead)
                 {
-                    
                     int damage = monster.Attackopp(player);
-                    
-                    Console.WriteLine($"{monster.Name} 의 공격!");
-                    Console.WriteLine($"Lv.{player.Level} {player.Name} 을(를) 맞췄습니다. [데미지 : {damage}]");
+                    Console.WriteLine("\nBattle!!\n");
+                    Console.WriteLine($"Lv.{monster.Level} {monster.Name} 의 공격!");
+                    Console.WriteLine($"{player.Name} 을(를) 맞췄습니다. [데미지 : {damage}]");
                     Console.WriteLine("");
 
                     if (player.isDead)
@@ -184,7 +183,9 @@ namespace B02_TextRPG
                     }
                     else
                     {
-                        Console.WriteLine($"{player.Name}에게 {damage}의 피해를 입혔습니다. 남은 체력: {player.Health}");
+                        Console.WriteLine($"Lv.{player.Level} {player.Name}\nHP {player.Health + damage} -> {player.Health}");
+                        Console.WriteLine("\n0. 다음");
+                        ConsoleUtility.PromptMenuChoice(0, 0); // 사용자가 '다음'을 선택할 때까지 기다림
                     }
                 }
             }
