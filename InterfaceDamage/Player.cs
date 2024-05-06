@@ -48,7 +48,7 @@ namespace B02_TextRPG
             Name = name;
             Job = job;
             SetJobStats();
-            Gold = 60000;
+            Gold = 1500;
             Health = 100;
             MaxHealth = Health;
             Attack = Attack;
