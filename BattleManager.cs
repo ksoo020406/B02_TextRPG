@@ -184,6 +184,8 @@ namespace B02_TextRPG
                     Console.WriteLine($"{monster.Name} 의 공격!");
                     Console.WriteLine($"Lv.{player.Level} {player.Name} 을(를) 맞췄습니다. [데미지 : {damage}]");
                     Console.WriteLine("");
+                   
+                    
 
                     if (player.isDead)
                     {
@@ -199,7 +201,29 @@ namespace B02_TextRPG
                     }
                 }
             }
+           
+           
+        }
+        public void CheckGameOver(Player player)
+        {
+            // 모든 몬스터가 죽었는지 확인
+            bool allMonstersDead = currentMonsters.All(monster => monster.isDead);
+            if (allMonstersDead)
+            {
+                Console.WriteLine("Victory!");
+                return;
+            }
+
+            // 플레이어가 죽었는지 확인
+            if (player.isDead)
+            {
+                Console.WriteLine("Lose...");
+                return;
+            }
         }
 
     }
+
+
+
 }
