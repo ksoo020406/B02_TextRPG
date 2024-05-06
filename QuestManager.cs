@@ -28,15 +28,15 @@ namespace B02_TextRPG
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("1. 과제발생기 강탈 미션 ★");                      // 기본 공격으로 매니저님들의 컴퓨터를 부수면 되는 게임
-                Console.WriteLine("2. 수진이의 사랑을 얻어라 ★ ★ ★");               // 혁최몬 체력이 좀 더 많아집니다
-                Console.WriteLine("3. 스파르타 코딩클럽에서 생존하기 ★ ★ ★ ★ ★");    // 일단 넣어봄
+                Console.WriteLine("2. 수진이의 사랑을 얻어라 ★ ★ ★");               // 수진이의 사랑과 눈물을 얻기 위한 여정
+                Console.WriteLine();
                 Console.WriteLine("0. 마을로 돌아가기");
 
                 Console.WriteLine();
 
 
 
-                int choice = ConsoleUtility.PromptMenuChoice(0, 3);
+                int choice = ConsoleUtility.PromptMenuChoice(0, 2);
 
                 switch (choice)
                 {
@@ -49,9 +49,6 @@ namespace B02_TextRPG
                         break;
                     case 2:
                         Quest2(player);
-                        break;
-                    case 3:
-                        Quest3(player);
                         break;
                 }
 
@@ -127,28 +124,6 @@ namespace B02_TextRPG
                     break;
 
             }
-        }
-
-        public static void Quest3(Player player)
-        {
-            Console.Clear();
-
-            Console.WriteLine("[ 퀘스트3. 스파르타 코딩클럽에서 생존하기 ]");
-            Console.WriteLine("난이도 : ★ ★ ★ ★ ★");
-
-            Console.WriteLine();
-            Console.WriteLine("'스파르타 코딩클럽에 온 것을 환영한다... " + Start.player.Name + " 이여...'");
-            Console.WriteLine("'이곳에 온 이상 너는 도망칠 수 없다'");
-            Console.WriteLine("'코딩을 해라.. 공부를 해라.. " + Start.player.Name + " ..!!!!");
-
-            Console.WriteLine();
-            Console.WriteLine("도망칠 수 없습니다. 아무 키나 입력해 스파르타 코딩클럽에 입장하세요");
-            Console.ReadKey();
-
-            //퀘스트 3번으로 가야한다.
-
-            // 아무 키를 누르면 스파르타코딩클럽으로 입장
-            // 지금은 아무거나 누르면 메인화면으로 돌아감
         }
 
         

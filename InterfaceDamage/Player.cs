@@ -26,8 +26,6 @@ namespace B02_TextRPG
         public bool isDead { get; set; }
 
 
-
-
         //public Player(string name, string job, int level, int atk, int def, int health, int gold)
         //{
         //    Level = level;

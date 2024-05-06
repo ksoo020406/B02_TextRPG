@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using static B02_TextRPG.StartQuest;
 
 namespace B02_TextRPG
 {
@@ -34,10 +36,9 @@ namespace B02_TextRPG
             Console.WriteLine("         .=$$$$$$$$$$$$$$$$$=;;=$$$$$$$$$$$$$$$$$$,       ");
             Console.WriteLine("                         ,$$$$$$$,                        ");
             Console.WriteLine("                  .!======$$$$$$$======*~                 ");
-            Console.WriteLine();
+            Console.WriteLine();           
 
             Console.WriteLine("1. 컴퓨터를 공격하기");
-            Console.WriteLine();
             Console.WriteLine("0. 마을로 돌아가기");
 
             Console.WriteLine();
@@ -52,13 +53,115 @@ namespace B02_TextRPG
                     break;
 
                 case 1:
-                    /// 컴퓨터를 공격해야함.
+                    AttackComputer(player); // 컴퓨터를 공격하는 메서드 호출
                     break;
 
 
             }
 
         }
+
+        public class Computer //컴퓨터
+        {
+            public string Name { get; set; }
+            public int Health { get; set; }
+
+            public Computer(string name, int health)
+            {
+                Name = name;
+                Health = health;
+            }
+        }
+
+        private static void AttackComputer(Player player)
+        {
+            // 적 객체를 생성하여 컴퓨터를 대체
+            Computer computer = new Computer("컴퓨터", 100); // 이름은 "컴퓨터", 체력은 100으로 설정
+
+
+            while (computer.Health > 0)
+            {
+                Console.Clear();    
+                Console.WriteLine();
+                Console.WriteLine("         .~;!!;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.        ");
+                Console.WriteLine("         .=$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$,        ");
+                Console.WriteLine("         .$!,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,!$-        ");
+                Console.WriteLine("         .$!                                   !$-        ");
+                Console.WriteLine("         .$!          오늘은                   !$-        ");
+                Console.WriteLine("         .$!                                   !$-        ");
+                Console.WriteLine("         .$!          어떤과제를               !$-        ");
+                Console.WriteLine("         .$!                                   !$-        ");
+                Console.WriteLine("         .$!          내볼까나...  ^^          !$-        ");
+                Console.WriteLine("         .$!                                   !$-        ");
+                Console.WriteLine("         .$!                                   !$-        ");
+                Console.WriteLine("         .$*:::::::::::::::::::::::::::::::::::*$-        ");
+                Console.WriteLine("         .=======================================-        ");
+                Console.WriteLine("         .~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.        ");
+                Console.WriteLine("         .=$$$$$$$$$$$$$$$$$=;;=$$$$$$$$$$$$$$$$$$,       ");
+                Console.WriteLine("                         ,$$$$$$$,                        ");
+                Console.WriteLine("                  .!======$$$$$$$======*~                 ");
+                Console.WriteLine();
+                Console.WriteLine($"컴퓨터 체력: {computer.Health}/100");
+                Console.WriteLine();
+                Console.WriteLine("1. 컴퓨터를 공격하기");
+                Console.WriteLine("0. 마을로 돌아가기");
+                Console.WriteLine();
+
+                int choice = ConsoleUtility.PromptMenuChoice(0, 1);
+
+                switch (choice)
+                {
+                    case 0:
+                        GameManager gameManager = new GameManager();
+                        gameManager.MainMenu(player);
+                        return;
+
+                    case 1:
+                        // 플레이어의 공격력으로 컴퓨터를 공격
+                        computer.Health -= player.Attack;
+
+
+                        if (computer.Health <= 0)
+                        {
+                            Console.Clear();
+
+                            Console.WriteLine();
+                            Console.WriteLine("         .~;!!;;;;   ;;;;;;;;;;            ;;;;;;.        ");
+                            Console.WriteLine("         .      $$$$$$$$           $$$$$$$$$$$$$$,        ");
+                            Console.WriteLine("         .$!,,,,,,,,,,,,,,,,      ,,,,,,,,,,,,,!$-        ");
+                            Console.WriteLine("         .$!                                   !$-        ");
+                            Console.WriteLine("    .$!            오늘                                   ");
+                            Console.WriteLine("         .$!                                   !$-        ");
+                            Console.WriteLine("         .$!                과제               !$-        ");
+                            Console.WriteLine("         .$!                                   !$-        ");
+                            Console.WriteLine("         .$!          없                                  ");
+                            Console.WriteLine("        $!                            음       !$-        ");
+                            Console.WriteLine("         .$!                                  !$-         ");
+                            Console.WriteLine("         .$*:::::::::         :::::::::::::::::*$-        ");
+                            Console.WriteLine("         .===================      ==============-        ");
+                            Console.WriteLine("         .~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~.              ");
+                            Console.WriteLine("              $$$$$$$$$$  =;;=$$$$$$$$$   $$$$,           ");
+                            Console.WriteLine("                         ,$$                              ");
+                            Console.WriteLine("      =$$         .!======$$$$$$$======*~                 ");
+                            Console.WriteLine();
+
+                            player.Gold += 500; // 보상으로 500G 지급
+
+                            Console.WriteLine("컴퓨터를 파괴했습니다!");
+                            Console.WriteLine();
+                            Console.WriteLine("보상으로 500G 를 드립니다");
+                            Console.WriteLine("아무 키를 눌러 마을로 돌아가세요");
+                            Console.ReadKey();
+                            
+                            break;
+                        }
+                        break;
+                }
+            }
+        }
+
+
+
 
         /// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// /
 
@@ -97,6 +200,8 @@ namespace B02_TextRPG
                     break;
             }
         }
+
+        
 
         public static void Sujin2(Player player)
         {
@@ -299,7 +404,8 @@ namespace B02_TextRPG
                     Console.WriteLine("                      , !$:....;#=-                               ");
                     Console.WriteLine("     .                  .-#;.,;@:.         .                      ");
                     Console.WriteLine("                          ~@!:@:                                  ");
-                    Console.WriteLine("                           ~##;.                                  ");   
+                    Console.WriteLine("                           ~##;.                                  ");
+
 
 
                     Console.WriteLine();
