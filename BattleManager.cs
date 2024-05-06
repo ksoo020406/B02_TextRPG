@@ -113,12 +113,22 @@ namespace B02_TextRPG
                 Console.WriteLine($"\nLv.{selectedMonster.Level} {selectedMonster.Name}\nHP {selectedMonster.Health + damage} -> Dead");
                 Console.WriteLine("");
                 Console.WriteLine("0. 다음");
+                int nextInput = ConsoleUtility.PromptMenuChoice(0, 0);
+                if (nextInput == 0)
+                {
+                    MonsterAttacks(player); // 몬스터들이 플레이어를 공격하는 메서드를 호출
+                }
             }
             else
             {
                 Console.WriteLine($"{selectedMonster.Name}에게 {damage}의 피해를 입혔습니다. 남은 체력: {selectedMonster.Health}");
                 Console.WriteLine("");
                 Console.WriteLine("0. 다음");
+                int nextInput = ConsoleUtility.PromptMenuChoice(0, 0);
+                if (nextInput == 0)
+                {
+                    MonsterAttacks(player); // 몬스터들이 플레이어를 공격하는 메서드를 호출
+                }
             }
 
             
@@ -153,6 +163,32 @@ namespace B02_TextRPG
         }
 
 
+        private void MonsterAttacks(Player player)
+        {
+            foreach (Monster monster in currentMonsters)
+            {
+                if (!monster.isDead)
+                {
+                    
+                    int damage = monster.Attackopp(player);
+                    
+                    Console.WriteLine($"{monster.Name} 의 공격!");
+                    Console.WriteLine($"Lv.{player.Level} {player.Name} 을(를) 맞췄습니다. [데미지 : {damage}]");
+                    Console.WriteLine("");
+
+                    if (player.isDead)
+                    {
+                        Console.WriteLine($"\nLv.{player.Level} {player.Name}\nHP {player.Health + damage} -> Dead");
+                        Console.WriteLine("\n0. 다음");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{player.Name}에게 {damage}의 피해를 입혔습니다. 남은 체력: {player.Health}");
+                    }
+                }
+            }
+        }
 
     }
 }
