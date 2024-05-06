@@ -18,6 +18,19 @@ namespace B02_TextRPG
             Console.WriteLine("");
             Console.WriteLine("[아이템 목록]"); // todo 스페셜 아이템 따로 추가해주기
             Console.WriteLine("");
+            Console.WriteLine("[스페셜]");
+            Console.WriteLine("");
+
+            for (int i = 0; i < Item.InventoryItems.Count; i++) // 리스트에는 항상 Count(몇 개?)라는 값이 있다.
+            {
+                //인벤토리 아이템 타입 판별하기
+                if (Item.InventoryItems[i].ThisItemType == ItemType.SPECIAL)
+                {
+                    Item.InventoryItems[i].PrintItemStatChange();
+                }
+            }
+
+            Console.WriteLine("");
             Console.WriteLine("[장비]");
             Console.WriteLine("");
 

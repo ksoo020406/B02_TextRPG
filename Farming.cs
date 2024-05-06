@@ -131,14 +131,19 @@ namespace B02_TextRPG
 
                     Item.InventoryItems.Add(cheatItem);
 
-                    if (cheatItem.ThisItemType == ItemType.CONSUME)
+                    if (cheatItem.ThisItemType == ItemType.SPECIAL)
+                    {
+                        Item.GetBuff(player);
+                    }
+
+                    else if (cheatItem.ThisItemType == ItemType.CONSUME)
                     {
                         // ConsumeItems 리스트에 추가
                         Item.ConsumeItems.Add(cheatItem);
                     }
 
                     // 인벤토리 아이템에서 아이템 타입이 WEAPON 이거나 ARMOR 이면
-                    if (cheatItem.ThisItemType == ItemType.WEAPON || cheatItem.ThisItemType == ItemType.ARMOR)
+                    else if (cheatItem.ThisItemType == ItemType.WEAPON || cheatItem.ThisItemType == ItemType.ARMOR)
                     {
                         // EquippedItems 리스트에 추가
                         Item.EquippedItems.Add(cheatItem);
