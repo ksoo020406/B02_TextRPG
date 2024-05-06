@@ -170,6 +170,7 @@ namespace B02_TextRPG
                 if (!monster.isDead)
                 {
                     int damage = monster.Attackopp(player);
+                    Console.Clear();
                     Console.WriteLine("\nBattle!!\n");
                     Console.WriteLine($"Lv.{monster.Level} {monster.Name} 의 공격!");
                     Console.WriteLine($"{player.Name} 을(를) 맞췄습니다. [데미지 : {damage}]");
