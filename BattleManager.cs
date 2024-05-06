@@ -12,8 +12,10 @@ namespace B02_TextRPG
     {
         MonsterManager monsterManager;
         List<Monster> currentMonsters;
+       
         public BattleManager()
         {
+           
             monsterManager = new MonsterManager();
             currentMonsters = new List<Monster>();
         }
@@ -184,8 +186,9 @@ namespace B02_TextRPG
                     Console.WriteLine($"{monster.Name} 의 공격!");
                     Console.WriteLine($"Lv.{player.Level} {player.Name} 을(를) 맞췄습니다. [데미지 : {damage}]");
                     Console.WriteLine("");
-                   
                     
+
+
 
                     if (player.isDead)
                     {
@@ -201,8 +204,8 @@ namespace B02_TextRPG
                     }
                 }
             }
-           
-           
+            CheckGameOver(player);
+
         }
         public void CheckGameOver(Player player)
         {
@@ -210,14 +213,35 @@ namespace B02_TextRPG
             bool allMonstersDead = currentMonsters.All(monster => monster.isDead);
             if (allMonstersDead)
             {
+                Console.Clear();
+                Console.WriteLine("Battle!! - Result");
+                Console.WriteLine("");
                 Console.WriteLine("Victory!");
+                Console.WriteLine("");
+                Console.WriteLine("던전 클리어!");
+                Console.WriteLine("");
+                Console.WriteLine($"Lv.{player.Level}  {player.Name} ({player.Job})");
+                Console.WriteLine($"HP {player.MaxHealth} -> HP {player.Health}\n");
+                Console.WriteLine("");
+                Console.WriteLine("0. 나가기");
+                ConsoleUtility.PromptMenuChoice(0, 0);
+                DunGeon.StartDunGeon(player);
                 return;
             }
 
             // 플레이어가 죽었는지 확인
             if (player.isDead)
             {
-                Console.WriteLine("Lose...");
+                Console.Clear();
+                Console.WriteLine("Battle!! - Result");
+                Console.WriteLine("");
+                Console.WriteLine("You Lose");
+                Console.WriteLine("");
+                Console.WriteLine($"Lv.{player.Level}  {player.Name} ({player.Job})");
+                Console.WriteLine($"HP {player.MaxHealth} -> HP {player.Health}\n");
+                Console.WriteLine("0. 나가기");
+                ConsoleUtility.PromptMenuChoice(0, 0);
+                DunGeon.StartDunGeon(player);
                 return;
             }
         }
