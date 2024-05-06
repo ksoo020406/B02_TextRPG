@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -68,15 +69,15 @@ namespace B02_TextRPG
         // 아이템 추가 메소드
         public void AddItem(Item store)
         {
-            storeItems.Add(store);
+            //storeItems.Add(store);
         }
 
         // 아이템 추가 메소드
         public void AddInvenItem(Item inventoryItems)
         {
-            InventoryItems.Add(inventoryItems);
-            EquippedItems.Add(inventoryItems);
-            ConsumeItems.Add(inventoryItems);
+            //InventoryItems.Add(inventoryItems);
+            //EquippedItems.Add(inventoryItems);
+            //ConsumeItems.Add(inventoryItems);
         }
 
         internal void PrintItemStatChange(bool anOptionNumber = false, int idx = 0)
@@ -169,6 +170,22 @@ namespace B02_TextRPG
         internal void ToggleConsume()
         {
             Consumed = !Consumed; // 사용됨의 반대
+        }
+
+        // 영구적용 버프 획득 메소드
+        internal static void GetBuff(Player player)
+        {
+            int idx = Item.InventoryItems.Count - 1;
+
+            bool buff = false;
+            if (!buff)
+            {
+                if (Item.InventoryItems[idx].Name == "수진이의 사랑")
+                {
+                    player.Attack += Item.InventoryItems[idx].AttackPower;
+                }
+                buff = true;
+            }
         }
 
     }
