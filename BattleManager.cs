@@ -47,7 +47,11 @@ namespace B02_TextRPG
                     
                     Console.WriteLine("1.공격");
                     ChoiceAttack(player);
-                    ConsoleUtility.PromptMenuChoice(1, 2);
+                    int nextInput = ConsoleUtility.PromptMenuChoice(0, 0);
+                    if (nextInput == 0)
+                    {
+                        ChoiceAttack(player); // 사용자가 '다음 선택하면 다시 ChoiceAttack 메서드를 호출
+                    }
                     break;
                 case 2:
                     Console.Clear();
@@ -117,6 +121,10 @@ namespace B02_TextRPG
                 if (nextInput == 0)
                 {
                     MonsterAttacks(player); // 몬스터들이 플레이어를 공격하는 메서드를 호출
+                    if (!player.isDead)
+                    {
+                        ChoiceAttack(player); // 플레이어가 살아있다면 다시 플레이어의 공격 차례
+                    }
                 }
             }
             else
@@ -169,11 +177,12 @@ namespace B02_TextRPG
             {
                 if (!monster.isDead)
                 {
-                    int damage = monster.Attackopp(player);
                     Console.Clear();
-                    Console.WriteLine("\nBattle!!\n");
-                    Console.WriteLine($"Lv.{monster.Level} {monster.Name} 의 공격!");
-                    Console.WriteLine($"{player.Name} 을(를) 맞췄습니다. [데미지 : {damage}]");
+                    int damage = monster.Attackopp(player);
+                    Console.WriteLine("Battle!!");
+                    Console.WriteLine("");
+                    Console.WriteLine($"{monster.Name} 의 공격!");
+                    Console.WriteLine($"Lv.{player.Level} {player.Name} 을(를) 맞췄습니다. [데미지 : {damage}]");
                     Console.WriteLine("");
 
                     if (player.isDead)
