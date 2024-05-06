@@ -35,7 +35,9 @@ namespace B02_TextRPG
             for (int i = 0; i < numberOfMonsters; i++)
             {
                 // 몬스터를 생성하고 목록에 추가
-                monsters.Add(this.monsters[random.Next(this.monsters.Count)]);
+                Monster originalMonster = this.monsters[random.Next(this.monsters.Count)];
+                Monster newMonster = new Monster(originalMonster.Name, originalMonster.Level, originalMonster.Health, originalMonster.Attack);
+                monsters.Add(newMonster);
             }
             return monsters;
         }
