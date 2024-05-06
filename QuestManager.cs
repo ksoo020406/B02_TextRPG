@@ -28,13 +28,12 @@ namespace B02_TextRPG
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine("1. 과제발생기 강탈 미션 ★");                      // 기본 공격으로 매니저님들의 컴퓨터를 부수면 되는 게임
-                Console.WriteLine("2. 거대한 혁최몬 소탕 미션 ★ ★ ★");               // 혁최몬 체력이 좀 더 많아집니다
+                Console.WriteLine("2. 수진이의 사랑을 얻어라 ★ ★ ★");               // 혁최몬 체력이 좀 더 많아집니다
                 Console.WriteLine("3. 스파르타 코딩클럽에서 생존하기 ★ ★ ★ ★ ★");    // 일단 넣어봄
                 Console.WriteLine("0. 마을로 돌아가기");
 
                 Console.WriteLine();
-                Console.WriteLine("참여하실 퀘스트 번호를 입력해주세요");
-                Console.Write(">>");
+
 
 
                 int choice = ConsoleUtility.PromptMenuChoice(0, 3);
@@ -76,14 +75,15 @@ namespace B02_TextRPG
             Console.WriteLine("1. 당연히 참여한다");
             Console.WriteLine("0. 무서우니 도망친다");
             Console.WriteLine();
-            Console.Write(">>");
 
             int choice = ConsoleUtility.PromptMenuChoice(0, 1);
 
             switch (choice)
             {
                 case 0:
-                    return;
+                    GameManager gameManager = new GameManager(); //게임매니저 인스턴스 생성      
+                    gameManager.MainMenu(player);  // 플레이어 정보를 MainMenu 메서드에 전달
+                    break;
 
                 case 1:
                     StartQuest.StartQuest1(player);
@@ -96,29 +96,34 @@ namespace B02_TextRPG
         {
             Console.Clear();
 
-            Console.WriteLine("[ 퀘스트2. 거대한 혁최몬 소탕 미션 ]");
+            Console.WriteLine("[ 퀘스트2. 수진이의 사랑을 얻어라! ]");
             Console.WriteLine("난이도 : ★ ★ ★");
 
             Console.WriteLine();
-            Console.WriteLine("'큰일이야!! " + Start.player.Name + " !!!'");
-            Console.WriteLine("'혁최몬이 내가 낸 과제물을 보고 분노해서 거대해져버렸대!!'");
-            Console.WriteLine("'마을 사람들을 마구 찌르며 괴롭히고 있다는데, 도와주지 않을래?'");
-            
+            Console.WriteLine("| ♡⃘♡⃘♡⃘♡⃘♡⃘♡⃘♡⃘♡⃘♡-----------------------------------|");
+            Console.WriteLine("| 　　　　　　　　　　　　　　　                      |");
+            Console.WriteLine("| 　　　　　화창한 날씨!!!　　　　　　　　　　        |");
+            Console.WriteLine("| 　　　　　내가 짝사랑하는 옆반 수진이에게　　　     |");
+            Console.WriteLine("| 　　　　　고백을 할거야            　　　           |");
+            Console.WriteLine("| 　　　　　　　　　　　　　　　                      |");
+            Console.WriteLine("|------------------------------------♡⃘♡⃘♡⃘♡⃘♡⃘♡⃘♡⃘♡⃘♡");
+
             Console.WriteLine();
-            Console.WriteLine("1. 당연히 참여한다");
-            Console.WriteLine("0. 무서우니 도망친다");
+            Console.WriteLine("1. 수진아 기다려 내가 간다!");
+            Console.WriteLine("0. 자신없이 없어.. 마을로 도망갈래");
             Console.WriteLine();
-            Console.Write(">>");
 
             int choice = ConsoleUtility.PromptMenuChoice(0, 1);
 
             switch (choice)
             {
                 case 0:
-                    return;
+                    GameManager gameManager = new GameManager(); //게임매니저 인스턴스 생성      
+                    gameManager.MainMenu(player);  // 플레이어 정보를 MainMenu 메서드에 전달
+                    break;
 
                 case 1:
-                    // 퀘스트 2번으로 가야한다
+                    StartQuest.Sujin1(player);
                     break;
 
             }
