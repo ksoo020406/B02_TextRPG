@@ -75,7 +75,7 @@ namespace B02_TextRPG
             {
                 Monster monster = currentMonsters[i];
                 string monsterStatus = monster.isDead ? "Dead" : $"HP {monster.Health}";
-                Console.WriteLine($"{i + 1} Lv.{monster.Level} {monster.Name}  {monsterStatus}");
+                Console.WriteLine($"{i + 1}. Lv.{monster.Level} {monster.Name}  {monsterStatus}");
             }
 
             Console.WriteLine("\n[내정보]");
@@ -230,6 +230,7 @@ namespace B02_TextRPG
                 Console.WriteLine("");
                 Console.WriteLine("0. 나가기");
                 ConsoleUtility.PromptMenuChoice(0, 0);
+                player.Health = player.MaxHealth;
                 DunGeon.StartDunGeon(player);
                 return;
             }
@@ -246,6 +247,7 @@ namespace B02_TextRPG
                 Console.WriteLine($"HP {player.MaxHealth} -> HP {player.Health}\n");
                 Console.WriteLine("0. 나가기");
                 ConsoleUtility.PromptMenuChoice(0, 0);
+                player.Health = player.MaxHealth;
                 DunGeon.StartDunGeon(player);
                 return;
             }
