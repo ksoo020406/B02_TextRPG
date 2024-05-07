@@ -83,7 +83,7 @@ namespace B02_TextRPG
             Console.WriteLine($"HP {player.Health}/{player.MaxHealth}\n");
             Console.WriteLine("0. 취소\n");
             Console.WriteLine("");
-            Console.WriteLine("대상을 원하시는 번호로 선택해주세요.");
+            Console.WriteLine("공격할 대상의 번호를 입력해주세요.");
             Console.WriteLine("");
 
 
