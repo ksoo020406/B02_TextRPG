@@ -27,8 +27,14 @@ namespace B02_TextRPG
                 Console.WriteLine("  \\___\\_\\\\__,_|\\___||___/\\__| (_)");
                 Console.WriteLine();
                 Console.WriteLine();
-                Console.WriteLine("1. 과제발생기 강탈 미션 ★");                      // 기본 공격으로 매니저님들의 컴퓨터를 부수면 되는 게임
+                Console.WriteLine("1. 과제발생기 강탈 미션 ★");  // 기본 공격으로 매니저님들의 컴퓨터를 부수면 되는 게임
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine("   ( 퀘스트 보상 : 500G )");
+                Console.ResetColor();
                 Console.WriteLine("2. 수진이의 사랑을 얻어라 ★ ★ ★");               // 수진이의 사랑과 눈물을 얻기 위한 여정
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.WriteLine("   ( 퀘스트 보상 : ??? )");
+                Console.ResetColor();
                 Console.WriteLine();
                 Console.WriteLine("0. 마을로 돌아가기");
 

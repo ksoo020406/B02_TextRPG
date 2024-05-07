@@ -17,7 +17,7 @@ namespace B02_TextRPG
             Console.WriteLine("과제발생기 강탈 미션을 시작합니다.");
             Console.WriteLine();
             Console.WriteLine("'여기야!!" + Start.player.Name + " !!!'");
-            Console.WriteLine("'이게 우리에게 자꾸 과제를 내준다는 극악무도한 <매니저님의 컴퓨터>야! 이걸 부숴줘!'");
+            Console.WriteLine("'이게 우리에게 자꾸 과제를 내준다는 극악무도한 < 매니저님의 컴퓨터 > 야! 이걸 부숴줘!'");
             Console.WriteLine();
             Console.WriteLine("         .~;!!;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;.        ");
             Console.WriteLine("         .=$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$,        ");

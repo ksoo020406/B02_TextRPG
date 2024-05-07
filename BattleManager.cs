@@ -61,7 +61,15 @@ namespace B02_TextRPG
                     Console.WriteLine("");
                     Console.WriteLine("");
                     Console.WriteLine("0.메인메뉴로 나가기");
-                    ConsoleUtility.PromptMenuChoice(0,0);
+                    int exit=ConsoleUtility.PromptMenuChoice(0, 0);
+                    if (exit == 0)
+                    {
+
+                        DunGeon.StartDunGeon(player);
+                        return;
+                    }
+                    
+                    
                     break;
             }
 
@@ -75,7 +83,7 @@ namespace B02_TextRPG
             {
                 Monster monster = currentMonsters[i];
                 string monsterStatus = monster.isDead ? "Dead" : $"HP {monster.Health}";
-                Console.WriteLine($"{i + 1} Lv.{monster.Level} {monster.Name}  {monsterStatus}");
+                Console.WriteLine($"{i + 1}. Lv.{monster.Level} {monster.Name}  {monsterStatus}");
             }
 
             Console.WriteLine("\n[내정보]");
@@ -87,9 +95,14 @@ namespace B02_TextRPG
             Console.WriteLine("");
 
 
-            int monsterIndex = ConsoleUtility.PromptMenuChoice(1, currentMonsters.Count);
-
-            if (monsterIndex <= 0 || monsterIndex > currentMonsters.Count)
+            int monsterIndex = ConsoleUtility.PromptMenuChoice(0, currentMonsters.Count);
+            if (monsterIndex == 0)
+            {
+                
+                BattleRetry(player);
+                return;
+            }
+            else if (monsterIndex < 0 || monsterIndex > currentMonsters.Count)
             {
                 Console.WriteLine("잘못된 입력입니다.");
                 return;
@@ -224,9 +237,14 @@ namespace B02_TextRPG
                 Console.WriteLine($"HP {player.MaxHealth} -> HP {player.Health}\n");
                 Console.WriteLine("");
                 Console.WriteLine("0. 나가기");
-                ConsoleUtility.PromptMenuChoice(0, 0);
-                DunGeon.StartDunGeon(player);
-                return;
+                int exit = ConsoleUtility.PromptMenuChoice(0, 0);
+                if (exit == 0)
+                {
+
+                    DunGeon.StartDunGeon(player);
+                    player.Health = player.MaxHealth;
+                    return;
+                }
             }
 
             // 플레이어가 죽었는지 확인
@@ -240,13 +258,67 @@ namespace B02_TextRPG
                 Console.WriteLine($"Lv.{player.Level}  {player.Name} ({player.Job})");
                 Console.WriteLine($"HP {player.MaxHealth} -> HP {player.Health}\n");
                 Console.WriteLine("0. 나가기");
-                ConsoleUtility.PromptMenuChoice(0, 0);
-                DunGeon.StartDunGeon(player);
-                return;
+                int exit = ConsoleUtility.PromptMenuChoice(0, 0);
+                if (exit == 0)
+                {
+
+                    DunGeon.StartDunGeon(player);
+                    player.Health = player.MaxHealth;
+                    return;
+                }
+
+                
+                
+            
             }
         }
 
+        public void BattleRetry(Player player)
+        {
+            Console.Clear();
+            Console.WriteLine("Battle!!");
+            Console.WriteLine("");
+
+            DisplayMonsters(currentMonsters);
+            Console.WriteLine("");
+
+
+            // 플레이어 정보
+            Console.WriteLine("[내 정보]");
+            Console.WriteLine($"LV.{player.Level},{player.Name}({player.Job})");
+            Console.WriteLine($"HP{player.Health}/{player.MaxHealth}");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("1.공격");
+            Console.WriteLine("2.도망친다");
+            int input = ConsoleUtility.PromptMenuChoice(1, 2);
+
+            switch (input)
+            {
+                case 1:
+
+                    Console.WriteLine("1.공격");
+                    ChoiceAttack(player);
+                    int nextInput = ConsoleUtility.PromptMenuChoice(0, 0);
+                    if (nextInput == 0)
+                    {
+                        ChoiceAttack(player); // 사용자가 '다음 선택하면 다시 ChoiceAttack 메서드를 호출
+                    }
+                    break;
+                case 2:
+                    Console.Clear();
+                    Console.WriteLine("도망 성공!");
+                    Console.WriteLine("");
+                    Console.WriteLine("");
+                    Console.WriteLine("0.메인메뉴로 나가기");
+                    ConsoleUtility.PromptMenuChoice(0, 0);
+                    break;
+            }
+        }
+
+
     }
+
 
 
 
