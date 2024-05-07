@@ -61,7 +61,15 @@ namespace B02_TextRPG
                     Console.WriteLine("");
                     Console.WriteLine("");
                     Console.WriteLine("0.메인메뉴로 나가기");
-                    ConsoleUtility.PromptMenuChoice(0,0);
+                    int exit=ConsoleUtility.PromptMenuChoice(0, 0);
+                    if (exit == 0)
+                    {
+
+                        DunGeon.StartDunGeon(player);
+                        return;
+                    }
+                    
+                    
                     break;
             }
 
@@ -229,10 +237,14 @@ namespace B02_TextRPG
                 Console.WriteLine($"HP {player.MaxHealth} -> HP {player.Health}\n");
                 Console.WriteLine("");
                 Console.WriteLine("0. 나가기");
-                ConsoleUtility.PromptMenuChoice(0, 0);
-                player.Health = player.MaxHealth;
-                DunGeon.StartDunGeon(player);
-                return;
+                int exit = ConsoleUtility.PromptMenuChoice(0, 0);
+                if (exit == 0)
+                {
+
+                    DunGeon.StartDunGeon(player);
+                    player.Health = player.MaxHealth;
+                    return;
+                }
             }
 
             // 플레이어가 죽었는지 확인
@@ -246,10 +258,18 @@ namespace B02_TextRPG
                 Console.WriteLine($"Lv.{player.Level}  {player.Name} ({player.Job})");
                 Console.WriteLine($"HP {player.MaxHealth} -> HP {player.Health}\n");
                 Console.WriteLine("0. 나가기");
-                ConsoleUtility.PromptMenuChoice(0, 0);
-                player.Health = player.MaxHealth;
-                DunGeon.StartDunGeon(player);
-                return;
+                int exit = ConsoleUtility.PromptMenuChoice(0, 0);
+                if (exit == 0)
+                {
+
+                    DunGeon.StartDunGeon(player);
+                    player.Health = player.MaxHealth;
+                    return;
+                }
+
+                
+                
+            
             }
         }
 
