@@ -406,7 +406,20 @@ namespace B02_TextRPG
                     Console.WriteLine("                          ~@!:@:                                  ");
                     Console.WriteLine("                           ~##;.                                  ");
 
+                    List<Item> getItemList = Item.storeItems.FindAll(n => n.Name == "수진이의 사랑");
 
+                    int idx = getItemList.FindIndex(n => n.Name == "수진이의 사랑");
+
+                    Item questResultItem = getItemList[idx];
+
+                    if (questResultItem.Name == "수진이의 사랑")
+                    {
+                        Item.InventoryItems.Add(questResultItem);
+                        if (questResultItem.ThisItemType == ItemType.SPECIAL)
+                        {
+                            Item.GetBuff(player);
+                        }
+                    }
 
                     Console.WriteLine();
                     Console.WriteLine("<수진이의 사랑> 아이템을 획득합니다.");
@@ -441,6 +454,17 @@ namespace B02_TextRPG
                     Console.WriteLine("               .....  ...........                 ");
                     Console.WriteLine("                    .........                      ");
                     Console.WriteLine();
+
+                    int idx2 = Item.storeItems.Count - 1;
+
+                    Item questResultItem2 = Item.storeItems[idx2];
+
+                    if (questResultItem2.Name == "수진이의 눈물" && questResultItem2.ThisItemType == ItemType.CONSUME)
+                    {
+                        Item.InventoryItems.Add(questResultItem2);
+                        Item.ConsumeItems.Add(questResultItem2);
+                    }
+
 
                     Console.WriteLine("<수진이의 눈물> 아이템을 획득합니다");
                     Console.WriteLine();
